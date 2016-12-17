@@ -15,16 +15,32 @@ public struct VRSliderConfiguration {
     let selectedFont: UIFont
     let nonSelectedFont: UIFont
     
+    let gradientColors: [UIColor]
+    let gradientWidthInPercent: Double
+    
     let sliderHeight: Int
     let sliderWidth: Int
     let itemWidth: Int
     
-    public init(values: [Int], defaultSelectedIndex: Int = 0, selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16), nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14), itemWidth: Int = 100, sliderHeight: Int, sliderWidth: Int) {
+    public init(values: [Int],
+                defaultSelectedIndex: Int = 0,
+                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16),
+                nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
+                
+                gradientColors: [UIColor] = [.lightGray, .white],
+                gradientWidthInPercent: Double = 0.4,
+                
+                itemWidth: Int = 100,
+                sliderHeight: Int,
+                sliderWidth: Int) {
         self.values = values
         self.defaultSelectedIndex = defaultSelectedIndex
         
         self.selectedFont = selectedFont
         self.nonSelectedFont = nonSelectedFont
+        
+        self.gradientColors = gradientColors
+        self.gradientWidthInPercent = gradientWidthInPercent
         
         self.sliderHeight = sliderHeight
         self.sliderWidth = sliderWidth
@@ -82,14 +98,14 @@ public class VRSlider: UIView {
     private lazy var leftGradientLayer: CALayer = {
         let layer = CAGradientLayer()
         
-        let width = Int(Double(self.configuration.sliderWidth) * 0.4)
+        let width = Int(Double(self.configuration.sliderWidth) * self.configuration.gradientWidthInPercent)
         
         layer.frame = CGRect(x: 0, y: 0, width: width, height: self.configuration.sliderHeight)
         
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 1.0, y: 0)
         
-        layer.colors = [UIColor.lightGray.cgColor, UIColor.white.cgColor]
+        layer.colors = self.configuration.gradientColors.map { $0.cgColor }
         layer.locations = [0.0, 1.0]
         
         return layer
@@ -98,14 +114,14 @@ public class VRSlider: UIView {
     private lazy var rightGradientLayer: CALayer = {
         let layer = CAGradientLayer()
         
-        let width = Int(Double(self.configuration.sliderWidth) * 0.4)
+        let width = Int(Double(self.configuration.sliderWidth) * self.configuration.gradientWidthInPercent)
         
         layer.frame = CGRect(x: self.configuration.sliderWidth - width, y: 0, width: width, height: self.configuration.sliderHeight)
         
         layer.startPoint = CGPoint(x: 1.0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 0)
         
-        layer.colors = [UIColor.lightGray.cgColor, UIColor.white.cgColor]
+        layer.colors = self.configuration.gradientColors.map { $0.cgColor }
         layer.locations = [0.0, 1.0]
         
         return layer
