@@ -12,13 +12,20 @@ public struct VRSliderConfiguration {
     let values: [Int]
     let defaultSelectedIndex: Int
     
+    let selectedFont: UIFont
+    let nonSelectedFont: UIFont
+    
     let sliderHeight: Int
     let sliderWidth: Int
     let itemWidth: Int
     
-    public init(values: [Int], defaultSelectedIndex: Int, itemWidth: Int, sliderHeight: Int, sliderWidth: Int) {
+    public init(values: [Int], defaultSelectedIndex: Int = 0, selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16), nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14), itemWidth: Int = 100, sliderHeight: Int, sliderWidth: Int) {
         self.values = values
         self.defaultSelectedIndex = defaultSelectedIndex
+        
+        self.selectedFont = selectedFont
+        self.nonSelectedFont = nonSelectedFont
+        
         self.sliderHeight = sliderHeight
         self.sliderWidth = sliderWidth
         self.itemWidth = itemWidth
@@ -30,7 +37,6 @@ public protocol VRSliderDelegate: class {
 }
 
 public class VRSlider: UIView {
-    
     public weak var delegate: VRSliderDelegate?
     
     internal let configuration: VRSliderConfiguration
@@ -39,11 +45,6 @@ public class VRSlider: UIView {
             delegate?.slider(self, didSelectIndex: selectedIndex)
         }
     }
-    
-    private let nonSelectedFont = UIFont.systemFont(ofSize: 14)
-    private let selectedFont = UIFont.boldSystemFont(ofSize: 16)
-    
-    private var valueViews = [UILabel]()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -146,20 +147,20 @@ public class VRSlider: UIView {
         
         for (itemIndex, item) in stackView.arrangedSubviews.enumerated() {
             if itemIndex == index {
-                (item as? UILabel)?.font = self.selectedFont
+                (item as? UILabel)?.font = configuration.selectedFont
             } else {
-                (item as? UILabel)?.font = self.nonSelectedFont
+                (item as? UILabel)?.font = configuration.nonSelectedFont
             }
         }
     }
     
     internal func convert(contentOffsetToIndex contentOffset: CGFloat) -> Int {
-        let offsetX = contentOffset + self.xContentInset
+        let offsetX = contentOffset + xContentInset
         
-        var itemIndex = Int(round(offsetX / CGFloat(self.configuration.itemWidth)))
+        var itemIndex = Int(round(offsetX / CGFloat(configuration.itemWidth)))
         
-        if itemIndex > self.configuration.values.count - 1 {
-            itemIndex = self.configuration.values.count - 1
+        if itemIndex > configuration.values.count - 1 {
+            itemIndex = configuration.values.count - 1
         } else if itemIndex < 0 {
             itemIndex = 0
         }
@@ -176,7 +177,7 @@ public class VRSlider: UIView {
         super.layoutSubviews()
         
         if !didLayoutOnce {
-            set(selectedIndex: self.selectedIndex, animated: false)
+            set(selectedIndex: selectedIndex, animated: false)
             didLayoutOnce = true
         }
     }
@@ -186,10 +187,10 @@ public class VRSlider: UIView {
         
         // TODO(vikrut):
         // * This should probably be merged with convert(contentOffsetToIndex)
-        var itemIndex = Int(floor(point.x / CGFloat(self.configuration.itemWidth)))
+        var itemIndex = Int(floor(point.x / CGFloat(configuration.itemWidth)))
         
-        if itemIndex > self.configuration.values.count - 1 {
-            itemIndex = self.configuration.values.count - 1
+        if itemIndex > configuration.values.count - 1 {
+            itemIndex = configuration.values.count - 1
         } else if itemIndex < 0 {
             itemIndex = 0
         }
@@ -198,10 +199,10 @@ public class VRSlider: UIView {
     }
     
     private func setupScrollView() {
-        self.addSubview(scrollView)
+        addSubview(scrollView)
         
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
-        singleTapGestureRecognizer.addTarget(self, action: #selector(self.scrollViewWasTapped(_:)))
+        singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
         
         NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
         
@@ -221,7 +222,7 @@ public class VRSlider: UIView {
             let valueLabel = UILabel()
             valueLabel.translatesAutoresizingMaskIntoConstraints = false
             valueLabel.text = "\(value)"
-            valueLabel.font = nonSelectedFont
+            valueLabel.font = configuration.nonSelectedFont
             valueLabel.textAlignment = .center
             
             stackView.addArrangedSubview(valueLabel)
