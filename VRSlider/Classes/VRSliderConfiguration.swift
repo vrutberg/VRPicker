@@ -22,7 +22,7 @@ public struct VRSliderConfiguration {
     let sliderWidth: Int
     let itemWidth: Int
     
-    public init(values: [Int],
+    public init(values: [Int] = [1, 2, 3, 4, 5],
                 defaultSelectedIndex: Int = 0,
                 selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16),
                 nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
@@ -31,8 +31,8 @@ public struct VRSliderConfiguration {
                 gradientWidthInPercent: Double = 0.4,
                 
                 itemWidth: Int = 100,
-                sliderHeight: Int,
-                sliderWidth: Int) {
+                sliderHeight: Int = 100,
+                sliderWidth: Int = 414) {
         self.values = values
         self.defaultSelectedIndex = defaultSelectedIndex
         
