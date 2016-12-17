@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2332278F7571CED1F246EE18866F0052 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		54C91F8D7511E99CECF6FF3D0EA1A0F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		2332278F7571CED1F246EE18866F0052 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		3DE3247F22F7C2BE11DA03F70F6E0E51 /* VRSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635BAC6721F3F7B157FB6A657D35C952 /* VRSlider.swift */; };
+		3E2ED560E1C521E10C0A15B3341DD8B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		41CC900011C4F147D56F13616EB3CFF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
+		54C91F8D7511E99CECF6FF3D0EA1A0F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
 		5564482A411CAC1DBA60AFA1ACB56396 /* Pods-VRSlider_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C032588E04F52AA1C68FA641AE6A91 /* Pods-VRSlider_Example-dummy.m */; };
 		6E55DB347B870B858F8F5D3AB280FEB1 /* Pods-VRSlider_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 642620219B9F644137CE3248863BF2C6 /* Pods-VRSlider_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79AF47F52C07984BCE6C10D8411B6AE3 /* VRSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F34D78EE76141DD333EADFDDB29B46 /* VRSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D26D8CA1D22A2E7E096DAAF17F497C5 /* VRSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC95A5AC873AB7244ED8DD804C1012CE /* VRSlider.swift */; };
+		79FC32C4EB4C10E1DEE645EF348F19FF /* VRSliderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B24F0B8EA6E36DA2CEA01FB2FB31 /* VRSliderConfiguration.swift */; };
 		7DC33A653BA87302C50E1533715A138C /* Pods-VRSlider_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBE4B8D44EE98068285A0BB7C487B42 /* Pods-VRSlider_Tests-dummy.m */; };
-		873B29E264D7503AB0992E5D0C017BB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A755CBA354C5C4C7A0B1991C48C6BACF /* Pods-VRSlider_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B89187CB92A1BE09CF410AA56425D21 /* Pods-VRSlider_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B567872605500EB2081FC3F7425E4342 /* VRSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF92F762BEDB399D61956463D99F36 /* VRSlider-dummy.m */; };
+		D4EACA3EE05D2761B4D06B7C9F56A86D /* VRSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF92F762BEDB399D61956463D99F36 /* VRSlider-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D17AFEB5030EF7A5974CA9005C06340 /* Pods_VRSlider_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRSlider_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D17AFEB5030EF7A5974CA9005C06340 /* Pods_VRSlider_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VRSlider_Tests.framework; path = "Pods-VRSlider_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC47AB18F2ADF1B5AC67F036FE6F206 /* Pods-VRSlider_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRSlider_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		16EF92F762BEDB399D61956463D99F36 /* VRSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VRSlider-dummy.m"; sourceTree = "<group>"; };
 		17F34D78EE76141DD333EADFDDB29B46 /* VRSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VRSlider-umbrella.h"; sourceTree = "<group>"; };
@@ -40,36 +42,39 @@
 		37BF3F1AFFB43DFD245B19B818F340A6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CE75031284F61DCDAB19513E5C84E17 /* Pods-VRSlider_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRSlider_Example-frameworks.sh"; sourceTree = "<group>"; };
 		4D58E7638A12E680A3987072C93F499D /* Pods-VRSlider_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRSlider_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		635BAC6721F3F7B157FB6A657D35C952 /* VRSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSlider.swift; sourceTree = "<group>"; };
 		642620219B9F644137CE3248863BF2C6 /* Pods-VRSlider_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRSlider_Example-umbrella.h"; sourceTree = "<group>"; };
-		66FB6736848D8033AFF5D648536C38B2 /* Pods-VRSlider_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-VRSlider_Tests.modulemap"; sourceTree = "<group>"; };
+		66FB6736848D8033AFF5D648536C38B2 /* Pods-VRSlider_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VRSlider_Tests.modulemap"; sourceTree = "<group>"; };
 		670130696CB975C4D4A59E0B321DD416 /* VRSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VRSlider.xcconfig; sourceTree = "<group>"; };
 		68760FC53F0225F1B4CA18F7ED5E65AB /* Pods-VRSlider_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRSlider_Tests-resources.sh"; sourceTree = "<group>"; };
 		6B89187CB92A1BE09CF410AA56425D21 /* Pods-VRSlider_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRSlider_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6DEA59529A9D7085C06A27D28150E3D0 /* Pods-VRSlider_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VRSlider_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		6DF7A6869EF7032F3616F8FB6E13BB34 /* Pods-VRSlider_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-VRSlider_Example.modulemap"; sourceTree = "<group>"; };
+		6DF7A6869EF7032F3616F8FB6E13BB34 /* Pods-VRSlider_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VRSlider_Example.modulemap"; sourceTree = "<group>"; };
+		7983B24F0B8EA6E36DA2CEA01FB2FB31 /* VRSliderConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSliderConfiguration.swift; sourceTree = "<group>"; };
 		79B303BB582D235C62F5C479AE470F0E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83C4A3CA93B1FF1E3A4B97A4CA79BECA /* VRSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VRSlider.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		83C4A3CA93B1FF1E3A4B97A4CA79BECA /* VRSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = VRSlider.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A17F9DE09C765F3FB4D9F6828FAAFCC1 /* Pods-VRSlider_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRSlider_Example-resources.sh"; sourceTree = "<group>"; };
 		A4C032588E04F52AA1C68FA641AE6A91 /* Pods-VRSlider_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VRSlider_Example-dummy.m"; sourceTree = "<group>"; };
-		BE8B48A9B815B0846B8D6ED9DC391F29 /* VRSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VRSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4631452C3242C4A5689A772C317565F /* Pods_VRSlider_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRSlider_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		BE8B48A9B815B0846B8D6ED9DC391F29 /* VRSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = VRSlider.framework; path = VRSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4631452C3242C4A5689A772C317565F /* Pods_VRSlider_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VRSlider_Example.framework; path = "Pods-VRSlider_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBE4B8D44EE98068285A0BB7C487B42 /* Pods-VRSlider_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VRSlider_Tests-dummy.m"; sourceTree = "<group>"; };
 		D8EDEC5B3C1BEFA84C3DF125ED88EC1E /* Pods-VRSlider_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRSlider_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DA9DF521DE960F5394D3F34147EBB0AB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC95A5AC873AB7244ED8DD804C1012CE /* VRSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSlider.swift; sourceTree = "<group>"; };
 		EDEACF3EB5D88AA85D703BBEF6FC61D9 /* Pods-VRSlider_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VRSlider_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EDFD50676D04108F3B960681CCFD0667 /* VRSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VRSlider-prefix.pch"; sourceTree = "<group>"; };
 		EFA402FCB86A2B1685ECBECA676D8853 /* Pods-VRSlider_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VRSlider_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		19BC84AEF1DAAAF9D78C6353B7D90D4D /* Frameworks */ = {
+		2F6916ADCEBAD8C8401EF8018517534A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B29E264D7503AB0992E5D0C017BB4 /* Foundation.framework in Frameworks */,
+				3E2ED560E1C521E10C0A15B3341DD8B5 /* Foundation.framework in Frameworks */,
+				41CC900011C4F147D56F13616EB3CFF6 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +100,9 @@
 		00D433E9A9C8DD4269448480A29A4AF2 /* VRSlider */ = {
 			isa = PBXGroup;
 			children = (
-				608E3DE3B419661E9BB573BBFE892C64 /* Classes */,
+				72BB28919286D4600AAB16AD644F705B /* Classes */,
 			);
+			name = VRSlider;
 			path = VRSlider;
 			sourceTree = "<group>";
 		};
@@ -123,6 +129,14 @@
 			path = "Example/Pods/Target Support Files/VRSlider";
 			sourceTree = "<group>";
 		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		589C0AF19A356BA6228FBBE4EE80E267 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,20 +147,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		608E3DE3B419661E9BB573BBFE892C64 /* Classes */ = {
+		72BB28919286D4600AAB16AD644F705B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DC95A5AC873AB7244ED8DD804C1012CE /* VRSlider.swift */,
+				635BAC6721F3F7B157FB6A657D35C952 /* VRSlider.swift */,
+				7983B24F0B8EA6E36DA2CEA01FB2FB31 /* VRSliderConfiguration.swift */,
 			);
+			name = Classes;
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -154,7 +162,7 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				F54C1FA4C9D242BD01AA089271CC266E /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
 				589C0AF19A356BA6228FBBE4EE80E267 /* Products */,
 				162A1021D81F699A5C0A69FD437D47EB /* Targets Support Files */,
 			);
@@ -176,14 +184,6 @@
 			);
 			name = "Pods-VRSlider_Example";
 			path = "Target Support Files/Pods-VRSlider_Example";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C0AD40A84F3CF04FA83C5999D56D2AB3 /* VRSlider */ = {
@@ -212,6 +212,15 @@
 			);
 			name = "Pods-VRSlider_Tests";
 			path = "Target Support Files/Pods-VRSlider_Tests";
+			sourceTree = "<group>";
+		};
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		F54C1FA4C9D242BD01AA089271CC266E /* Development Pods */ = {
@@ -291,8 +300,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE13254FF35AAC3A6778D9585F1F46D2 /* Build configuration list for PBXNativeTarget "VRSlider" */;
 			buildPhases = (
-				A1C676D1AA21DA7460012071384DB34A /* Sources */,
-				19BC84AEF1DAAAF9D78C6353B7D90D4D /* Frameworks */,
+				4BE802E155799F77889D30C433D8C62D /* Sources */,
+				2F6916ADCEBAD8C8401EF8018517534A /* Frameworks */,
 				9FC4C9F53E02FA783157607B05F249D5 /* Headers */,
 			);
 			buildRules = (
@@ -333,12 +342,13 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A1C676D1AA21DA7460012071384DB34A /* Sources */ = {
+		4BE802E155799F77889D30C433D8C62D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B567872605500EB2081FC3F7425E4342 /* VRSlider-dummy.m in Sources */,
-				7D26D8CA1D22A2E7E096DAAF17F497C5 /* VRSlider.swift in Sources */,
+				D4EACA3EE05D2761B4D06B7C9F56A86D /* VRSlider-dummy.m in Sources */,
+				3DE3247F22F7C2BE11DA03F70F6E0E51 /* VRSlider.swift in Sources */,
+				79FC32C4EB4C10E1DEE645EF348F19FF /* VRSliderConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

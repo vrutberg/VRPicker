@@ -1,9 +1,9 @@
 {
   "name": "VRSlider",
   "version": "0.1.0",
-  "summary": "A short description of VRSlider.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/VRSlider",
+  "summary": "A configurable slider for iOS apps written in Swift",
+  "description": "VRSlider is a configurable and simple horizontal slider for iOS apps written entirely in Swift.",
+  "homepage": "https://github.com/vrutberg/VRSlider",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,12 @@
     "Viktor Rutberg": "wishie@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/VRSlider.git",
+    "git": "https://github.com/vrutberg/VRSlider.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "9.3"
   },
-  "source_files": "VRSlider/Classes/**/*"
+  "source_files": "VRSlider/Classes/**/*",
+  "frameworks": "UIKit"
 }
