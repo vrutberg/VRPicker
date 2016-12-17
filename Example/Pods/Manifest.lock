@@ -1,0 +1,16 @@
+PODS:
+  - VRSlider (0.1.0)
+
+DEPENDENCIES:
+  - VRSlider (from `../`)
+
+EXTERNAL SOURCES:
+  VRSlider:
+    :path: ../
+
+SPEC CHECKSUMS:
+  VRSlider: 6614e4d5ddb39c7796641d24b0b532d65a1cb185
+
+PODFILE CHECKSUM: fdd6aa3b38a2097f93d4065ec1f4cbd73d17f92b
+
+COCOAPODS: 1.1.1

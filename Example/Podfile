@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'VRSlider_Example' do
+  pod 'VRSlider', :path => '../'
+
+  target 'VRSlider_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
