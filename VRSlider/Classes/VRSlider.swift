@@ -25,10 +25,20 @@ public struct VRSliderConfiguration {
     }
 }
 
+public protocol VRSliderDelegate: class {
+    func slider(_ sender: VRSlider, didSelectIndex index: Int)
+}
+
 public class VRSlider: UIView {
     
+    public weak var delegate: VRSliderDelegate?
+    
     internal let configuration: VRSliderConfiguration
-    private(set) var selectedIndex: Int
+    private(set) var selectedIndex: Int {
+        didSet {
+            delegate?.slider(self, didSelectIndex: selectedIndex)
+        }
+    }
     
     private let nonSelectedFont = UIFont.systemFont(ofSize: 14)
     private let selectedFont = UIFont.boldSystemFont(ofSize: 16)
@@ -128,6 +138,10 @@ public class VRSlider: UIView {
     }
     
     public func markItemAsSelected(at index: Int) {
+        guard selectedIndex != index else {
+            return
+        }
+        
         selectedIndex = index
         
         for (itemIndex, item) in stackView.arrangedSubviews.enumerated() {
@@ -229,7 +243,6 @@ public class VRSlider: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension VRSlider: UIScrollViewDelegate {
@@ -245,5 +258,4 @@ extension VRSlider: UIScrollViewDelegate {
         
         markItemAsSelected(at: index)
     }
-    
 }

@@ -9,7 +9,7 @@
 import UIKit
 import VRSlider
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, VRSliderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         let config = VRSliderConfiguration(values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], defaultSelectedIndex: 1, itemWidth: 100, sliderHeight: 100, sliderWidth: 414)
         
         let sliderView = VRSlider(configuration: config)
+        sliderView.delegate = self
         
         sliderView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -31,6 +32,10 @@ class ViewController: UIViewController {
         NSLayoutConstraint(item: sliderView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100).isActive = true
         
         view.layoutIfNeeded()
+    }
+    
+    func slider(_ sender: VRSlider, didSelectIndex index: Int) {
+        print("didSelectIndex: \(index)")
     }
 }
 
