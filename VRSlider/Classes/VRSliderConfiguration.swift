@@ -18,8 +18,6 @@ public struct VRSliderConfiguration {
     let gradientColors: [UIColor]
     let gradientWidthInPercent: Double
     
-    let sliderHeight: Int
-    let sliderWidth: Int
     let itemWidth: Int
     
     public init(values: [Int] = [1, 2, 3, 4, 5],
@@ -30,9 +28,7 @@ public struct VRSliderConfiguration {
                 gradientColors: [UIColor] = [.lightGray, .white],
                 gradientWidthInPercent: Double = 0.4,
                 
-                itemWidth: Int = 100,
-                sliderHeight: Int = 100,
-                sliderWidth: Int = 414) {
+                itemWidth: Int = 100) {
         self.values = values
         self.defaultSelectedIndex = defaultSelectedIndex
         
@@ -42,8 +38,6 @@ public struct VRSliderConfiguration {
         self.gradientColors = gradientColors
         self.gradientWidthInPercent = gradientWidthInPercent
         
-        self.sliderHeight = sliderHeight
-        self.sliderWidth = sliderWidth
         self.itemWidth = itemWidth
     }
 }

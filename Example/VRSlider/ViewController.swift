@@ -14,7 +14,7 @@ class ViewController: UIViewController, VRSliderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let config = VRSliderConfiguration(values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], defaultSelectedIndex: 1, itemWidth: 100, sliderHeight: 100, sliderWidth: 414)
+        let config = VRSliderConfiguration(values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], defaultSelectedIndex: 1, itemWidth: 100)
         
         let sliderView = VRSlider(with: config, frame: .zero)
         sliderView.delegate = self

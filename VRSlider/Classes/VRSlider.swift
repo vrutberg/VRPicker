@@ -75,9 +75,9 @@ public class VRSlider: UIView {
     private lazy var leftGradientLayer: CALayer = {
         let layer = CAGradientLayer()
         
-        let width = Int(Double(self.configuration.sliderWidth) * self.configuration.gradientWidthInPercent)
+        let width = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
         
-        layer.frame = CGRect(x: 0, y: 0, width: width, height: self.configuration.sliderHeight)
+        layer.frame = CGRect(x: 0, y: 0, width: width, height: Int(self.frame.height))
         
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 1.0, y: 0)
@@ -91,9 +91,9 @@ public class VRSlider: UIView {
     private lazy var rightGradientLayer: CALayer = {
         let layer = CAGradientLayer()
         
-        let width = Int(Double(self.configuration.sliderWidth) * self.configuration.gradientWidthInPercent)
+        let width = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
         
-        layer.frame = CGRect(x: self.configuration.sliderWidth - width, y: 0, width: width, height: self.configuration.sliderHeight)
+        layer.frame = CGRect(x: Int(self.frame.width) - width, y: 0, width: width, height: Int(self.frame.height))
         
         layer.startPoint = CGPoint(x: 1.0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 0)
@@ -107,7 +107,7 @@ public class VRSlider: UIView {
     private var didLayoutOnce = false
     
     internal var xContentInset: CGFloat {
-        return CGFloat(configuration.sliderWidth - configuration.itemWidth) / 2.0
+        return frame.width - CGFloat(configuration.itemWidth) / 2.0
     }
     
     private func scroll(toIndex index: Int, animated: Bool = true) {
@@ -161,6 +161,8 @@ public class VRSlider: UIView {
             set(selectedIndex: selectedIndex, animated: false)
             didLayoutOnce = true
         }
+        
+        print("layoutSubviews view.frame \(frame)")
     }
     
     @objc private func scrollViewWasTapped(_ sender: UITapGestureRecognizer) {
