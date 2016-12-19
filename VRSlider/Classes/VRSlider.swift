@@ -12,9 +12,8 @@ public protocol VRSliderDelegate: class {
     func slider(_ sender: VRSlider, didSelectIndex index: Int)
 }
 
-@IBDesignable
 public class VRSlider: UIView {
-    public var configuration = VRSliderConfiguration()
+    private let configuration: VRSliderConfiguration
 
     public weak var delegate: VRSliderDelegate?
     
@@ -22,6 +21,22 @@ public class VRSlider: UIView {
         didSet {
             delegate?.slider(self, didSelectIndex: selectedIndex)
         }
+    }
+
+    public init(with configuration: VRSliderConfiguration, frame: CGRect) {
+        self.configuration = configuration
+        self.selectedIndex = configuration.defaultSelectedIndex
+        
+        super.init(frame: frame)
+        
+        layer.addSublayer(leftGradientLayer)
+        layer.addSublayer(rightGradientLayer)
+        
+        setupScrollView()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private lazy var scrollView: UIScrollView = {
@@ -93,13 +108,6 @@ public class VRSlider: UIView {
     
     internal var xContentInset: CGFloat {
         return CGFloat(configuration.sliderWidth - configuration.itemWidth) / 2.0
-    }
-    
-    override public func awakeFromNib() {
-        layer.addSublayer(leftGradientLayer)
-        layer.addSublayer(rightGradientLayer)
-        
-        setupScrollView()
     }
     
     private func scroll(toIndex index: Int, animated: Bool = true) {
