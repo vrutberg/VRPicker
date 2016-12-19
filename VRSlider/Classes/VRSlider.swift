@@ -39,6 +39,17 @@ public class VRSlider: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // TODO(vrutberg):
+    // * this should probably be done in a fancier way...
+    private func updateSubviews() {
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
+        
+        let gradientWidth = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
+        
+        leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(self.frame.height))
+        rightGradientLayer.frame = CGRect(x: Int(self.frame.width) - gradientWidth, y: 0, width: gradientWidth, height: Int(self.frame.height))
+    }
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
@@ -107,7 +118,7 @@ public class VRSlider: UIView {
     private var didLayoutOnce = false
     
     internal var xContentInset: CGFloat {
-        return frame.width - CGFloat(configuration.itemWidth) / 2.0
+        return (frame.width - CGFloat(configuration.itemWidth)) / 2.0
     }
     
     private func scroll(toIndex index: Int, animated: Bool = true) {
@@ -162,13 +173,13 @@ public class VRSlider: UIView {
             didLayoutOnce = true
         }
         
-        print("layoutSubviews view.frame \(frame)")
+        updateSubviews()
     }
     
     @objc private func scrollViewWasTapped(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: scrollView)
         
-        // TODO(vikrut):
+        // TODO(vrutberg):
         // * This should probably be merged with convert(contentOffsetToIndex)
         var itemIndex = Int(floor(point.x / CGFloat(configuration.itemWidth)))
         
