@@ -115,8 +115,6 @@ public class VRSlider: UIView {
         return layer
     }()
     
-    private var didLayoutOnce = false
-    
     internal var xContentInset: CGFloat {
         return (frame.width - CGFloat(configuration.itemWidth)) / 2.0
     }
@@ -168,12 +166,8 @@ public class VRSlider: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        if !didLayoutOnce {
-            set(selectedIndex: selectedIndex, animated: false)
-            didLayoutOnce = true
-        }
-        
         updateSubviews()
+        set(selectedIndex: selectedIndex, animated: false)
     }
     
     @objc private func scrollViewWasTapped(_ sender: UITapGestureRecognizer) {
