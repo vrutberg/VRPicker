@@ -84,36 +84,38 @@ public class VRSlider: UIView {
     }()
     
     private lazy var leftGradientLayer: CALayer = {
-        let layer = CAGradientLayer()
-        
-        let width = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
-        
-        layer.frame = CGRect(x: 0, y: 0, width: width, height: Int(self.frame.height))
-        
-        layer.startPoint = CGPoint(x: 0, y: 0)
-        layer.endPoint = CGPoint(x: 1.0, y: 0)
-        
-        layer.colors = self.configuration.gradientColors.map { $0.cgColor }
-        layer.locations = [0.0, 1.0]
-        
-        return layer
+        return self.createGradientLayer(ofType: .left)
     }()
     
     private lazy var rightGradientLayer: CALayer = {
+        return self.createGradientLayer(ofType: .right)
+    }()
+    
+    private enum GradientLayerType {
+        case left
+        case right
+    }
+    
+    private func createGradientLayer(ofType type: GradientLayerType) -> CAGradientLayer {
         let layer = CAGradientLayer()
         
-        let width = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
+        layer.frame = .zero
         
-        layer.frame = CGRect(x: Int(self.frame.width) - width, y: 0, width: width, height: Int(self.frame.height))
-        
-        layer.startPoint = CGPoint(x: 1.0, y: 0)
-        layer.endPoint = CGPoint(x: 0, y: 0)
+        switch type {
+        case .left:
+            layer.startPoint = CGPoint(x: 0, y: 0)
+            layer.endPoint = CGPoint(x: 1.0, y: 0)
+
+        case .right:
+            layer.startPoint = CGPoint(x: 1.0, y: 0)
+            layer.endPoint = CGPoint(x: 0, y: 0)
+        }
         
         layer.colors = self.configuration.gradientColors.map { $0.cgColor }
         layer.locations = [0.0, 1.0]
         
         return layer
-    }()
+    }
     
     internal var xContentInset: CGFloat {
         return (frame.width - CGFloat(configuration.itemWidth)) / 2.0
