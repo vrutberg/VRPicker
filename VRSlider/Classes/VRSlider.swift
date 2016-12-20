@@ -31,6 +31,9 @@ public class VRSlider: UIView {
 
         setupGradientContainerView()
         setupScrollView()
+        setupSelectionHighlightView()
+
+        sendSubview(toBack: selectionHighlightView)
 
         switch configuration.gradientPosition {
         case .above:
@@ -55,6 +58,16 @@ public class VRSlider: UIView {
         leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(self.frame.height))
         rightGradientLayer.frame = CGRect(x: Int(self.frame.width) - gradientWidth, y: 0, width: gradientWidth, height: Int(self.frame.height))
     }
+
+    private lazy var selectionHighlightView: UIView = {
+        let view = UIView(frame: .zero)
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = CGFloat(self.configuration.itemWidth / 4)
+        view.backgroundColor = .green
+
+        return view
+    }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -194,6 +207,20 @@ public class VRSlider: UIView {
         }
         
         set(selectedIndex: itemIndex)
+    }
+
+    private func setupSelectionHighlightView() {
+        addSubview(selectionHighlightView)
+
+        let width = CGFloat(self.configuration.itemWidth / 2)
+
+        NSLayoutConstraint(item: selectionHighlightView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: selectionHighlightView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: selectionHighlightView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width).isActive = true
+
+        NSLayoutConstraint(item: selectionHighlightView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width).isActive = true
     }
 
     private func setupGradientContainerView() {
