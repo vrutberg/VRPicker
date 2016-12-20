@@ -83,13 +83,8 @@ public class VRSlider: UIView {
         return gestureRecognizer
     }()
     
-    private lazy var leftGradientLayer: CALayer = {
-        return self.createGradientLayer(ofType: .left)
-    }()
-    
-    private lazy var rightGradientLayer: CALayer = {
-        return self.createGradientLayer(ofType: .right)
-    }()
+    private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
+    private lazy var rightGradientLayer: CALayer = self.createGradientLayer(ofType: .right)
     
     private enum GradientLayerType {
         case left
