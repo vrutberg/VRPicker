@@ -8,6 +8,11 @@
 
 import Foundation
 
+public enum GradientPosition {
+    case above
+    case below
+}
+
 public struct VRSliderConfiguration {
     let values: [Int]
     let defaultSelectedIndex: Int
@@ -17,6 +22,7 @@ public struct VRSliderConfiguration {
     
     let gradientColors: [UIColor]
     let gradientWidthInPercent: Double
+    let gradientPosition: GradientPosition
     
     let itemWidth: Int
     
@@ -27,6 +33,7 @@ public struct VRSliderConfiguration {
                 
                 gradientColors: [UIColor] = [.lightGray, .white],
                 gradientWidthInPercent: Double = 0.4,
+                gradientPosition: GradientPosition = .below,
                 
                 itemWidth: Int = 100) {
         self.values = values
@@ -37,6 +44,7 @@ public struct VRSliderConfiguration {
         
         self.gradientColors = gradientColors
         self.gradientWidthInPercent = gradientWidthInPercent
+        self.gradientPosition = gradientPosition
         
         self.itemWidth = itemWidth
     }

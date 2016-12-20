@@ -28,11 +28,17 @@ public class VRSlider: UIView {
         self.selectedIndex = configuration.defaultSelectedIndex
         
         super.init(frame: frame)
-        
-        layer.addSublayer(leftGradientLayer)
-        layer.addSublayer(rightGradientLayer)
-        
+
+        setupGradientContainerView()
         setupScrollView()
+
+        switch configuration.gradientPosition {
+        case .above:
+            bringSubview(toFront: gradientContainerView)
+
+        case .below:
+            bringSubview(toFront: scrollView)
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -82,7 +88,14 @@ public class VRSlider: UIView {
         
         return gestureRecognizer
     }()
-    
+
+    private lazy var gradientContainerView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+
     private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
     private lazy var rightGradientLayer: CALayer = self.createGradientLayer(ofType: .right)
     
@@ -182,7 +195,22 @@ public class VRSlider: UIView {
         
         set(selectedIndex: itemIndex)
     }
-    
+
+    private func setupGradientContainerView() {
+        gradientContainerView.layer.addSublayer(leftGradientLayer)
+        gradientContainerView.layer.addSublayer(rightGradientLayer)
+
+        addSubview(gradientContainerView)
+
+        NSLayoutConstraint(item: gradientContainerView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: gradientContainerView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: gradientContainerView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: gradientContainerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+    }
+
     private func setupScrollView() {
         addSubview(scrollView)
         

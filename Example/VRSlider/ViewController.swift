@@ -13,12 +13,13 @@ class ViewController: UIViewController, VRSliderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let config = VRSliderConfiguration(values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], defaultSelectedIndex: 1, itemWidth: 100)
+
+        let config = VRSliderConfiguration(values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], defaultSelectedIndex: 1, gradientColors: [UIColor.white.withAlphaComponent(0.8), UIColor.white.withAlphaComponent(0)], gradientPosition: .above, itemWidth: 100)
         
         let sliderView = VRSlider(with: config, frame: .zero)
+
+        sliderView.backgroundColor = .white
         sliderView.delegate = self
-        
         sliderView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(sliderView)
