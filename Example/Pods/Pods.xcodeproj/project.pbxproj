@@ -17,6 +17,7 @@
 		79AF47F52C07984BCE6C10D8411B6AE3 /* VRSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F34D78EE76141DD333EADFDDB29B46 /* VRSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79FC32C4EB4C10E1DEE645EF348F19FF /* VRSliderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B24F0B8EA6E36DA2CEA01FB2FB31 /* VRSliderConfiguration.swift */; };
 		7DC33A653BA87302C50E1533715A138C /* Pods-VRSlider_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBE4B8D44EE98068285A0BB7C487B42 /* Pods-VRSlider_Tests-dummy.m */; };
+		7FCC77BA1E0B0B7B003F3807 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCC77B81E0B091C003F3807 /* PickerView.swift */; };
 		A755CBA354C5C4C7A0B1991C48C6BACF /* Pods-VRSlider_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B89187CB92A1BE09CF410AA56425D21 /* Pods-VRSlider_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4EACA3EE05D2761B4D06B7C9F56A86D /* VRSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EF92F762BEDB399D61956463D99F36 /* VRSlider-dummy.m */; };
 /* End PBXBuildFile section */
@@ -32,7 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D17AFEB5030EF7A5974CA9005C06340 /* Pods_VRSlider_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VRSlider_Tests.framework; path = "Pods-VRSlider_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D17AFEB5030EF7A5974CA9005C06340 /* Pods_VRSlider_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRSlider_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC47AB18F2ADF1B5AC67F036FE6F206 /* Pods-VRSlider_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRSlider_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		16EF92F762BEDB399D61956463D99F36 /* VRSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VRSlider-dummy.m"; sourceTree = "<group>"; };
 		17F34D78EE76141DD333EADFDDB29B46 /* VRSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VRSlider-umbrella.h"; sourceTree = "<group>"; };
@@ -45,21 +46,22 @@
 		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		635BAC6721F3F7B157FB6A657D35C952 /* VRSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSlider.swift; sourceTree = "<group>"; };
 		642620219B9F644137CE3248863BF2C6 /* Pods-VRSlider_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRSlider_Example-umbrella.h"; sourceTree = "<group>"; };
-		66FB6736848D8033AFF5D648536C38B2 /* Pods-VRSlider_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VRSlider_Tests.modulemap"; sourceTree = "<group>"; };
+		66FB6736848D8033AFF5D648536C38B2 /* Pods-VRSlider_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-VRSlider_Tests.modulemap"; sourceTree = "<group>"; };
 		670130696CB975C4D4A59E0B321DD416 /* VRSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VRSlider.xcconfig; sourceTree = "<group>"; };
 		68760FC53F0225F1B4CA18F7ED5E65AB /* Pods-VRSlider_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRSlider_Tests-resources.sh"; sourceTree = "<group>"; };
 		6B89187CB92A1BE09CF410AA56425D21 /* Pods-VRSlider_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRSlider_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6DEA59529A9D7085C06A27D28150E3D0 /* Pods-VRSlider_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VRSlider_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		6DF7A6869EF7032F3616F8FB6E13BB34 /* Pods-VRSlider_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VRSlider_Example.modulemap"; sourceTree = "<group>"; };
+		6DF7A6869EF7032F3616F8FB6E13BB34 /* Pods-VRSlider_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-VRSlider_Example.modulemap"; sourceTree = "<group>"; };
 		7983B24F0B8EA6E36DA2CEA01FB2FB31 /* VRSliderConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSliderConfiguration.swift; sourceTree = "<group>"; };
 		79B303BB582D235C62F5C479AE470F0E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		83C4A3CA93B1FF1E3A4B97A4CA79BECA /* VRSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = VRSlider.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7FCC77B81E0B091C003F3807 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		83C4A3CA93B1FF1E3A4B97A4CA79BECA /* VRSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VRSlider.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A17F9DE09C765F3FB4D9F6828FAAFCC1 /* Pods-VRSlider_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRSlider_Example-resources.sh"; sourceTree = "<group>"; };
 		A4C032588E04F52AA1C68FA641AE6A91 /* Pods-VRSlider_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VRSlider_Example-dummy.m"; sourceTree = "<group>"; };
-		BE8B48A9B815B0846B8D6ED9DC391F29 /* VRSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = VRSlider.framework; path = VRSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4631452C3242C4A5689A772C317565F /* Pods_VRSlider_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VRSlider_Example.framework; path = "Pods-VRSlider_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8B48A9B815B0846B8D6ED9DC391F29 /* VRSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VRSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4631452C3242C4A5689A772C317565F /* Pods_VRSlider_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VRSlider_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBE4B8D44EE98068285A0BB7C487B42 /* Pods-VRSlider_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VRSlider_Tests-dummy.m"; sourceTree = "<group>"; };
 		D8EDEC5B3C1BEFA84C3DF125ED88EC1E /* Pods-VRSlider_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRSlider_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DA9DF521DE960F5394D3F34147EBB0AB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 			children = (
 				72BB28919286D4600AAB16AD644F705B /* Classes */,
 			);
-			name = VRSlider;
 			path = VRSlider;
 			sourceTree = "<group>";
 		};
@@ -152,8 +153,8 @@
 			children = (
 				635BAC6721F3F7B157FB6A657D35C952 /* VRSlider.swift */,
 				7983B24F0B8EA6E36DA2CEA01FB2FB31 /* VRSliderConfiguration.swift */,
+				7FCC77B81E0B091C003F3807 /* PickerView.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -321,6 +322,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					DF71B37D3B5D893FBDB88FA863796430 = {
+						LastSwiftMigration = 0820;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -346,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FCC77BA1E0B0B7B003F3807 /* PickerView.swift in Sources */,
 				D4EACA3EE05D2761B4D06B7C9F56A86D /* VRSlider-dummy.m in Sources */,
 				3DE3247F22F7C2BE11DA03F70F6E0E51 /* VRSlider.swift in Sources */,
 				79FC32C4EB4C10E1DEE645EF348F19FF /* VRSliderConfiguration.swift in Sources */,
@@ -461,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FE4F0361C1E032FBF935B214451AEFE /* Pods-VRSlider_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -498,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8EDEC5B3C1BEFA84C3DF125ED88EC1E /* Pods-VRSlider_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
