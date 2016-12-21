@@ -30,8 +30,6 @@ public class VRSlider: UIView {
         
         super.init(frame: frame)
 
-//        layer.addSublayer(selectionColorLayer)
-//        setupGradientContainerView()
         setupSelectionPickerView()
         setupPickerView()
 
@@ -55,8 +53,6 @@ public class VRSlider: UIView {
         
         leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(self.frame.height))
         rightGradientLayer.frame = CGRect(x: Int(self.frame.width) - gradientWidth, y: 0, width: gradientWidth, height: Int(self.frame.height))
-
-        selectionColorLayer.frame = frame
 
         maskingLayer?.removeFromSuperlayer()
         maskingLayer = nil
@@ -91,14 +87,6 @@ public class VRSlider: UIView {
         return view
     }()
 
-    private lazy var selectionColorLayer: CALayer = {
-        let layer = CALayer()
-
-        layer.backgroundColor = self.configuration.selectionBackgroundColor.cgColor
-
-        return layer
-    }()
-
     private func createMaskingLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
 
@@ -125,14 +113,9 @@ public class VRSlider: UIView {
         let y = (frame.height / CGFloat(2)) - radius
         let x = (frame.width / CGFloat(2)) - radius
 
-//        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: 0)
         let circlePath = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
-//        path.append(circlePath)
-//        path.usesEvenOddFillRule = true
 
         layer.path = circlePath.cgPath
-//        layer.fillRule = kCAFillRuleEvenOdd
-//        layer.fillColor = backgroundColor?.cgColor
 
         return layer
     }
