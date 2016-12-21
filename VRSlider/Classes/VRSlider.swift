@@ -30,16 +30,19 @@ public class VRSlider: UIView {
         
         super.init(frame: frame)
 
+        setupGradientContainerView()
         setupSelectionPickerView()
         setupPickerView()
 
-//        switch configuration.gradientPosition {
-//        case .above:
-//            bringSubview(toFront: gradientContainerView)
+        bringSubview(toFront: pickerView)
 
-//        case .below:
-            bringSubview(toFront: pickerView)
-//        }
+        switch configuration.gradientPosition {
+        case .above:
+            bringSubview(toFront: gradientContainerView)
+
+        case .below:
+            sendSubview(toBack: gradientContainerView)
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
