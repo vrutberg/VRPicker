@@ -16,6 +16,7 @@ public class VRSlider: UIView {
     private let configuration: VRSliderConfiguration
 
     public weak var delegate: VRSliderDelegate?
+    private var maskingLayer: CAShapeLayer?
     
     private(set) var selectedIndex = 0 {
         didSet {
@@ -29,11 +30,9 @@ public class VRSlider: UIView {
         
         super.init(frame: frame)
 
+        layer.addSublayer(selectionColorLayer)
         setupGradientContainerView()
         setupScrollView()
-        setupSelectionHighlightView()
-
-        sendSubview(toBack: selectionHighlightView)
 
         switch configuration.gradientPosition {
         case .above:
@@ -57,18 +56,17 @@ public class VRSlider: UIView {
         
         leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(self.frame.height))
         rightGradientLayer.frame = CGRect(x: Int(self.frame.width) - gradientWidth, y: 0, width: gradientWidth, height: Int(self.frame.height))
+
+        selectionColorLayer.frame = frame
+
+        maskingLayer?.removeFromSuperlayer()
+        maskingLayer = nil
+
+        let newMaskingLayer = createMaskingLayer()
+        layer.addSublayer(newMaskingLayer)
+        maskingLayer = newMaskingLayer
     }
 
-    private lazy var selectionHighlightView: UIView = {
-        let view = UIView(frame: .zero)
-
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = CGFloat(self.configuration.itemWidth / 4)
-        view.backgroundColor = .green
-
-        return view
-    }()
-    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
@@ -108,6 +106,33 @@ public class VRSlider: UIView {
         view.isUserInteractionEnabled = false
         return view
     }()
+
+    private lazy var selectionColorLayer: CALayer = {
+        let layer = CALayer()
+
+        layer.backgroundColor = self.configuration.selectionColor.cgColor
+
+        return layer
+    }()
+
+    private func createMaskingLayer() -> CAShapeLayer {
+        let layer = CAShapeLayer()
+
+        let radius = CGFloat(self.configuration.itemWidth / 4)
+        let y = (frame.height / CGFloat(2)) - radius
+        let x = (frame.width / CGFloat(2)) - radius
+
+        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: 0)
+        let circlePath = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
+        path.append(circlePath)
+        path.usesEvenOddFillRule = true
+
+        layer.path = path.cgPath
+        layer.fillRule = kCAFillRuleEvenOdd
+        layer.fillColor = backgroundColor?.cgColor
+
+        return layer
+    }
 
     private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
     private lazy var rightGradientLayer: CALayer = self.createGradientLayer(ofType: .right)
@@ -207,20 +232,6 @@ public class VRSlider: UIView {
         }
         
         set(selectedIndex: itemIndex)
-    }
-
-    private func setupSelectionHighlightView() {
-        addSubview(selectionHighlightView)
-
-        let width = CGFloat(self.configuration.itemWidth / 2)
-
-        NSLayoutConstraint(item: selectionHighlightView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: selectionHighlightView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: selectionHighlightView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width).isActive = true
-
-        NSLayoutConstraint(item: selectionHighlightView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width).isActive = true
     }
 
     private func setupGradientContainerView() {
