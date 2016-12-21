@@ -154,8 +154,6 @@ final class PickerView: UIView {
         NSLayoutConstraint(item: scrollView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
 
         NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
-
-        setupScrollViewContent()
     }
 
     private func setupScrollViewContent() {
