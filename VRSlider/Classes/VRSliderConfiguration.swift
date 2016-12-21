@@ -32,9 +32,9 @@ public struct VRSliderConfiguration {
     public init(values: [String] = ["1 år", "2 år", "3 år", "4 år", "5 år"],
                 defaultSelectedIndex: Int = 0,
 
-                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16),
+                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 20),
                 selectedColor: UIColor = .white,
-                nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 12),
+                nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
                 nonSelectedColor: UIColor = .black,
                 selectionBackgroundColor: UIColor = .green,
 

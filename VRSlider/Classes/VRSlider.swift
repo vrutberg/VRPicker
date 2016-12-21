@@ -93,7 +93,7 @@ public class VRSlider: UIView {
     private func createMaskingLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
 
-        let radius = CGFloat(self.configuration.itemWidth / 4)
+        let radius = CGFloat(self.configuration.itemWidth / 3)
         let y = (frame.height / CGFloat(2)) - radius
         let x = (frame.width / CGFloat(2)) - radius
 
@@ -112,7 +112,7 @@ public class VRSlider: UIView {
     private func createAnotherMaskingLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
 
-        let radius = CGFloat(self.configuration.itemWidth / 4)
+        let radius = CGFloat(self.configuration.itemWidth / 3)
         let y = (frame.height / CGFloat(2)) - radius
         let x = (frame.width / CGFloat(2)) - radius
 
