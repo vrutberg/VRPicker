@@ -67,7 +67,7 @@ public class VRSlider: UIView {
     }
 
     internal lazy var pickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont)
+        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedColor)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -75,7 +75,7 @@ public class VRSlider: UIView {
     }()
 
     internal lazy var pickerView2: PickerView = {
-        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont)
+        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedColor)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -92,7 +92,7 @@ public class VRSlider: UIView {
     private lazy var selectionColorLayer: CALayer = {
         let layer = CALayer()
 
-        layer.backgroundColor = self.configuration.selectionColor.cgColor
+        layer.backgroundColor = self.configuration.selectionBackgroundColor.cgColor
 
         return layer
     }()

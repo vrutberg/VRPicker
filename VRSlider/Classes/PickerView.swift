@@ -18,6 +18,7 @@ final class PickerView: UIView {
     private let itemWidth: Int
     private let items: [Int]
     private let itemFont: UIFont
+    private let itemFontColor: UIColor
 
     var delegate: PickerViewDelegate?
 
@@ -27,10 +28,11 @@ final class PickerView: UIView {
         }
     }
 
-    init(items: [Int], itemWidth: Int, itemFont: UIFont) {
+    init(items: [Int], itemWidth: Int, itemFont: UIFont, itemFontColor: UIColor) {
         self.items = items
         self.itemWidth = itemWidth
         self.itemFont = itemFont
+        self.itemFontColor = itemFontColor
 
         super.init(frame: .zero)
 
@@ -164,6 +166,7 @@ final class PickerView: UIView {
             valueLabel.translatesAutoresizingMaskIntoConstraints = false
             valueLabel.text = "\(value)"
             valueLabel.font = itemFont
+            valueLabel.textColor = itemFontColor
             valueLabel.textAlignment = .center
 
             stackView.addArrangedSubview(valueLabel)
