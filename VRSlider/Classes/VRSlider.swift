@@ -33,14 +33,14 @@ public class VRSlider: UIView {
         layer.addSublayer(selectionColorLayer)
         setupGradientContainerView()
         setupSelectionPickerView()
-        setupPickerView2()
+        setupPickerView()
 
 //        switch configuration.gradientPosition {
 //        case .above:
 //            bringSubview(toFront: gradientContainerView)
 
 //        case .below:
-            bringSubview(toFront: pickerView2)
+            bringSubview(toFront: pickerView)
 //        }
     }
     
@@ -74,7 +74,7 @@ public class VRSlider: UIView {
         return pickerView
     }()
 
-    internal lazy var pickerView2: PickerView = {
+    internal lazy var pickerView: PickerView = {
         let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedColor)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,10 +151,10 @@ public class VRSlider: UIView {
         matchSizeWithConstraints(view1: selectionPickerView, view2: self)
     }
 
-    func setupPickerView2() {
-        addSubview(pickerView2)
-        pickerView2.delegate = self
-        matchSizeWithConstraints(view1: pickerView2, view2: self)
+    func setupPickerView() {
+        addSubview(pickerView)
+        pickerView.delegate = self
+        matchSizeWithConstraints(view1: pickerView, view2: self)
     }
         
     override public func layoutSubviews() {
