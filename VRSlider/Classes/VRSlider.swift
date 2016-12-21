@@ -32,7 +32,7 @@ public class VRSlider: UIView {
 
         layer.addSublayer(selectionColorLayer)
         setupGradientContainerView()
-        setupPickerView()
+        setupSelectionPickerView()
         setupPickerView2()
 
 //        switch configuration.gradientPosition {
@@ -62,11 +62,11 @@ public class VRSlider: UIView {
         maskingLayer = nil
 
         let newMaskingLayer = createMaskingLayer()
-        pickerView.layer.addSublayer(newMaskingLayer)
+        selectionPickerView.layer.addSublayer(newMaskingLayer)
         maskingLayer = newMaskingLayer
     }
 
-    internal lazy var pickerView: PickerView = {
+    internal lazy var selectionPickerView: PickerView = {
         let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedColor)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -145,10 +145,10 @@ public class VRSlider: UIView {
         return layer
     }
     
-    func setupPickerView() {
-        addSubview(pickerView)
+    func setupSelectionPickerView() {
+        addSubview(selectionPickerView)
 
-        matchSizeWithConstraints(view1: pickerView, view2: self)
+        matchSizeWithConstraints(view1: selectionPickerView, view2: self)
     }
 
     func setupPickerView2() {
@@ -184,7 +184,7 @@ public class VRSlider: UIView {
 
 extension VRSlider: PickerViewDelegate {
     func slider(_ sender: PickerView, didSlideTo: CGPoint) {
-        pickerView.scrollView.contentOffset.x = didSlideTo.x
+        selectionPickerView.scrollView.contentOffset.x = didSlideTo.x
     }
 
     func slider(_ sender: PickerView, didSelectIndex index: Int) {
