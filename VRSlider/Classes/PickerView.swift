@@ -15,8 +15,8 @@ protocol PickerViewDelegate: class {
 }
 
 final class PickerView: UIView {
+    private let items: [String]
     private let itemWidth: Int
-    private let items: [Int]
     private let itemFont: UIFont
     private let itemFontColor: UIColor
 
@@ -28,7 +28,7 @@ final class PickerView: UIView {
         }
     }
 
-    init(items: [Int], itemWidth: Int, itemFont: UIFont, itemFontColor: UIColor) {
+    init(items: [String], itemWidth: Int, itemFont: UIFont, itemFontColor: UIColor) {
         self.items = items
         self.itemWidth = itemWidth
         self.itemFont = itemFont

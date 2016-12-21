@@ -14,7 +14,7 @@ public enum GradientPosition {
 }
 
 public struct VRSliderConfiguration {
-    let values: [Int]
+    let values: [String]
     let defaultSelectedIndex: Int
     
     let selectedFont: UIFont
@@ -29,12 +29,12 @@ public struct VRSliderConfiguration {
     
     let itemWidth: Int
     
-    public init(values: [Int] = [1, 2, 3, 4, 5],
+    public init(values: [String] = ["1 år", "2 år", "3 år", "4 år", "5 år"],
                 defaultSelectedIndex: Int = 0,
 
-                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 18),
+                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16),
                 selectedColor: UIColor = .white,
-                nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
+                nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 12),
                 nonSelectedColor: UIColor = .black,
                 selectionBackgroundColor: UIColor = .green,
 
