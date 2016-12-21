@@ -11,6 +11,7 @@ import UIKit
 
 protocol PickerViewDelegate: class {
     func slider(_ sender: PickerView, didSelectIndex index: Int)
+    func slider(_ sender: PickerView, didSlideTo: CGPoint)
 }
 
 final class PickerView: UIView {
@@ -46,7 +47,7 @@ final class PickerView: UIView {
         return (frame.width - CGFloat(itemWidth)) / 2.0
     }
 
-    private lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
 
         scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
@@ -192,6 +193,8 @@ extension PickerView: UIScrollViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = convert(contentOffsetToIndex: scrollView.contentOffset.x)
+
+        delegate?.slider(self, didSlideTo: scrollView.contentOffset)
 
         markItemAsSelected(at: index)
     }

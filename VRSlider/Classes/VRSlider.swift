@@ -33,14 +33,15 @@ public class VRSlider: UIView {
         layer.addSublayer(selectionColorLayer)
         setupGradientContainerView()
         setupPickerView()
+        setupPickerView2()
 
-        switch configuration.gradientPosition {
-        case .above:
-            bringSubview(toFront: gradientContainerView)
+//        switch configuration.gradientPosition {
+//        case .above:
+//            bringSubview(toFront: gradientContainerView)
 
-        case .below:
-            bringSubview(toFront: pickerView)
-        }
+//        case .below:
+            bringSubview(toFront: pickerView2)
+//        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -61,11 +62,19 @@ public class VRSlider: UIView {
         maskingLayer = nil
 
         let newMaskingLayer = createMaskingLayer()
-        layer.addSublayer(newMaskingLayer)
+        pickerView.layer.addSublayer(newMaskingLayer)
         maskingLayer = newMaskingLayer
     }
 
-    private lazy var pickerView: PickerView = {
+    internal lazy var pickerView: PickerView = {
+        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont)
+
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+
+        return pickerView
+    }()
+
+    internal lazy var pickerView2: PickerView = {
         let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -139,21 +148,19 @@ public class VRSlider: UIView {
     func setupPickerView() {
         addSubview(pickerView)
 
-        NSLayoutConstraint(item: pickerView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        matchSizeWithConstraints(view1: pickerView, view2: self)
+    }
 
-        NSLayoutConstraint(item: pickerView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: pickerView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: pickerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+    func setupPickerView2() {
+        addSubview(pickerView2)
+        pickerView2.delegate = self
+        matchSizeWithConstraints(view1: pickerView2, view2: self)
     }
         
     override public func layoutSubviews() {
         super.layoutSubviews()
-        
         updateSubviews()
     }
-    
 
     private func setupGradientContainerView() {
         gradientContainerView.layer.addSublayer(leftGradientLayer)
@@ -161,14 +168,26 @@ public class VRSlider: UIView {
 
         addSubview(gradientContainerView)
 
-        NSLayoutConstraint(item: gradientContainerView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        matchSizeWithConstraints(view1: gradientContainerView, view2: self)
+    }
 
-        NSLayoutConstraint(item: gradientContainerView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+    private func matchSizeWithConstraints(view1: UIView, view2: UIView) {
+        NSLayoutConstraint(item: view1, attribute: .top, relatedBy: .equal, toItem: view2, attribute: .top, multiplier: 1, constant: 0).isActive = true
 
-        NSLayoutConstraint(item: gradientContainerView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: view1, attribute: .leading, relatedBy: .equal, toItem: view2, attribute: .leading, multiplier: 1, constant: 0).isActive = true
 
-        NSLayoutConstraint(item: gradientContainerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: view1, attribute: .trailing, relatedBy: .equal, toItem: view2, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: view1, attribute: .bottom, relatedBy: .equal, toItem: view2, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
 }
 
+extension VRSlider: PickerViewDelegate {
+    func slider(_ sender: PickerView, didSlideTo: CGPoint) {
+        pickerView.scrollView.contentOffset.x = didSlideTo.x
+    }
 
+    func slider(_ sender: PickerView, didSelectIndex index: Int) {
+
+    }
+}

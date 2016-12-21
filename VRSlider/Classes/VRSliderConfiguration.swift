@@ -30,7 +30,7 @@ public struct VRSliderConfiguration {
     public init(values: [Int] = [1, 2, 3, 4, 5],
                 defaultSelectedIndex: Int = 0,
 
-                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 16),
+                selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 18),
                 nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
                 selectionColor: UIColor = .green,
 
