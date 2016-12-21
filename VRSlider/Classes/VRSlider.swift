@@ -30,8 +30,8 @@ public class VRSlider: UIView {
         
         super.init(frame: frame)
 
-        layer.addSublayer(selectionColorLayer)
-        setupGradientContainerView()
+//        layer.addSublayer(selectionColorLayer)
+//        setupGradientContainerView()
         setupSelectionPickerView()
         setupPickerView()
 
@@ -63,6 +63,8 @@ public class VRSlider: UIView {
 
         let newMaskingLayer = createMaskingLayer()
         selectionPickerView.layer.addSublayer(newMaskingLayer)
+        selectionPickerView.layer.mask = createAnotherMaskingLayer()
+        pickerView.layer.mask = createMaskingLayer()
         maskingLayer = newMaskingLayer
     }
 
@@ -116,6 +118,25 @@ public class VRSlider: UIView {
         return layer
     }
 
+    private func createAnotherMaskingLayer() -> CAShapeLayer {
+        let layer = CAShapeLayer()
+
+        let radius = CGFloat(self.configuration.itemWidth / 4)
+        let y = (frame.height / CGFloat(2)) - radius
+        let x = (frame.width / CGFloat(2)) - radius
+
+//        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: 0)
+        let circlePath = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
+//        path.append(circlePath)
+//        path.usesEvenOddFillRule = true
+
+        layer.path = circlePath.cgPath
+//        layer.fillRule = kCAFillRuleEvenOdd
+//        layer.fillColor = backgroundColor?.cgColor
+
+        return layer
+    }
+
     private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
     private lazy var rightGradientLayer: CALayer = self.createGradientLayer(ofType: .right)
     
@@ -147,7 +168,7 @@ public class VRSlider: UIView {
     
     func setupSelectionPickerView() {
         addSubview(selectionPickerView)
-
+        selectionPickerView.layer.backgroundColor = UIColor.green.cgColor
         matchSizeWithConstraints(view1: selectionPickerView, view2: self)
     }
 
