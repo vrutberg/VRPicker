@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  VRSlider
+//  VRPicker
 //
 //  Created by Viktor Rutberg on 12/17/2016.
 //  Copyright (c) 2016 Viktor Rutberg. All rights reserved.

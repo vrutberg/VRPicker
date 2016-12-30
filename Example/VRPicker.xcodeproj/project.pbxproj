@@ -24,7 +24,7 @@
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = VRSlider;
+			remoteInfo = VRPicker;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -179,7 +179,7 @@
 			dependencies = (
 			);
 			name = VRPicker_Example;
-			productName = VRSlider;
+			productName = VRPicker;
 			productReference = 607FACD01AFB9204008FA782 /* VRPicker_Example.app */;
 			productType = "com.apple.product-type.application";
 		};

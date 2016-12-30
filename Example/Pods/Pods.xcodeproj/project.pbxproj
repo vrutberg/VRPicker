@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BA49CD09C981612918EC99CBAA036B0 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CD859C4F22D80ED8D70CC627DFF303 /* HelperFunctions.swift */; };
-		28F42D44D21C55E1C4FE5650CBF6B6A9 /* VRSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBAE932A1D84F4667C0920420C375CE /* VRSlider.swift */; };
+		355D2DAEAE72CC9FC00B785AACF5EE9F /* VRPickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DEF6611FFFB60C94D612197CA94497 /* VRPickerConfiguration.swift */; };
 		437D9091E74F2FE5BB912ED7CE96BA08 /* Pods-VRPicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EDC017A09B31EDD971EDDD037F8F763 /* Pods-VRPicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CC83CD998E454E19592A9EC11E362D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
-		51435849C3F9129437BAA348474A4467 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297BD4BBBADBAE00008C928D418E311 /* PickerView.swift */; };
+		558693BA46439E0FE79838386AD88489 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1BFFA9C321D9D3BCED73014C4E533D /* PickerView.swift */; };
 		60A697595C6F2EDAD6BB41914165E867 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
 		6E4770974F4ACEDF8EB535D28C455F53 /* Pods-VRPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 117BC05E892481F94A9543D6A10C8DA2 /* Pods-VRPicker_Tests-dummy.m */; };
 		71800EFD17144A8DFE2A3138406C15AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
 		7B2A42BD9E7E36C11BA1F6730BB220A6 /* VRPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3585D900EA62D2A989A6FEDA8E91863D /* VRPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		957B2325498EA15A72349D9033F5A36A /* VRSliderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C893C214A40BEC55A7D0D41E0F630 /* VRSliderConfiguration.swift */; };
+		B2DFAAFBCFE42626285A591D0FFE85AB /* VRPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8124E82AA07507BEFAB0771B311F4 /* VRPicker-dummy.m */; };
 		C3AA75812294063182C34B823622F306 /* Pods-VRPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8707B59FFA4DF8FA0E778B8B5E7D5F0A /* Pods-VRPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA070BC25BAD650DAC8C44211B93F6C4 /* VRPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8124E82AA07507BEFAB0771B311F4 /* VRPicker-dummy.m */; };
 		D29C05E3531B7FB2FD31CB8C369309DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		ED2DF21E07922A89C08144C8F9E13ECD /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A50C766E1A44DECA38A3A8DB4E66481 /* HelperFunctions.swift */; };
 		F449D5281623A4A3B420F4AD5641DCD9 /* Pods-VRPicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ECF2373CE9BE15E5486420C1BDC50 /* Pods-VRPicker_Example-dummy.m */; };
+		FA8FD579180BA1D802C18B7B48B66E83 /* VRPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47017BD6E9C3AA1D942AB9A199123BD /* VRPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,19 +39,19 @@
 		137E22397199AD202270DC5E241CFAA9 /* VRPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = VRPicker.modulemap; sourceTree = "<group>"; };
 		14566570A7422FDBA360DC3EDEADD8AC /* VRPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = VRPicker.framework; path = VRPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1609EC4FD3E3A5CA73EE210CDE579EF1 /* VRPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VRPicker-prefix.pch"; sourceTree = "<group>"; };
-		2297BD4BBBADBAE00008C928D418E311 /* PickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		1C1BFFA9C321D9D3BCED73014C4E533D /* PickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		28895757C8FFF0AB70BE00969717B935 /* Pods-VRPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2B6DFFCC0E69A2B8A916AC102B57C513 /* Pods-VRPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
-		2C4C893C214A40BEC55A7D0D41E0F630 /* VRSliderConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSliderConfiguration.swift; sourceTree = "<group>"; };
+		30DEF6611FFFB60C94D612197CA94497 /* VRPickerConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRPickerConfiguration.swift; sourceTree = "<group>"; };
 		3585D900EA62D2A989A6FEDA8E91863D /* VRPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VRPicker-umbrella.h"; sourceTree = "<group>"; };
 		3C0FBE9E68AEA4608403E6EDA17FD972 /* Pods-VRPicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VRPicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		3FE8124E82AA07507BEFAB0771B311F4 /* VRPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VRPicker-dummy.m"; sourceTree = "<group>"; };
-		47CD859C4F22D80ED8D70CC627DFF303 /* HelperFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		5069BA7352147885DAA5635BB81C2BA4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		619A680AFD98306CF54C067738C01248 /* Pods-VRPicker_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRPicker_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		6427A0CEF816269163F4820E88ECCA04 /* Pods_VRPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VRPicker_Tests.framework; path = "Pods-VRPicker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6647931DC36D0087764241AA13136A6B /* Pods-VRPicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VRPicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6A50C766E1A44DECA38A3A8DB4E66481 /* HelperFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		7DF955934A7DD1B4805AFC7E30EF4542 /* Pods-VRPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8707B59FFA4DF8FA0E778B8B5E7D5F0A /* Pods-VRPicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRPicker_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -61,8 +61,8 @@
 		9BDF18DFDA00FA5F54BC55969906E52F /* Pods-VRPicker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRPicker_Tests-resources.sh"; sourceTree = "<group>"; };
 		9EDC017A09B31EDD971EDDD037F8F763 /* Pods-VRPicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRPicker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		9F7E8A25FEC84C8B05A9C73FC2EE45FC /* Pods-VRPicker_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRPicker_Example-resources.sh"; sourceTree = "<group>"; };
+		C47017BD6E9C3AA1D942AB9A199123BD /* VRPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRPicker.swift; sourceTree = "<group>"; };
 		C6A4B33EA4942DF9B62365430C2837F5 /* Pods-VRPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		CCBAE932A1D84F4667C0920420C375CE /* VRSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VRSlider.swift; sourceTree = "<group>"; };
 		D5866FC6D0156D6771F8EB01ED526780 /* Pods-VRPicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRPicker_Example-frameworks.sh"; sourceTree = "<group>"; };
 		D959C67BF08C8E852AC2AD25456BE3BD /* Pods-VRPicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VRPicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DD70864F7A089687CBF69F9329899740 /* VRPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VRPicker.xcconfig; sourceTree = "<group>"; };
@@ -142,6 +142,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6A2869B56B632E57E05131F5AFB0E3F4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6A50C766E1A44DECA38A3A8DB4E66481 /* HelperFunctions.swift */,
+				1C1BFFA9C321D9D3BCED73014C4E533D /* PickerView.swift */,
+				C47017BD6E9C3AA1D942AB9A199123BD /* VRPicker.swift */,
+				30DEF6611FFFB60C94D612197CA94497 /* VRPickerConfiguration.swift */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		6FC8E9D60FE7FED8AFA92AF308D11CA7 /* Pods-VRPicker_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,22 +204,10 @@
 		8CE304A14E834363C2C52988D0D24BFF /* VRPicker */ = {
 			isa = PBXGroup;
 			children = (
-				9A570FB948AB7D3BA745AF7ABD7C1499 /* Classes */,
+				6A2869B56B632E57E05131F5AFB0E3F4 /* Classes */,
 			);
 			name = VRPicker;
 			path = VRPicker;
-			sourceTree = "<group>";
-		};
-		9A570FB948AB7D3BA745AF7ABD7C1499 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				47CD859C4F22D80ED8D70CC627DFF303 /* HelperFunctions.swift */,
-				2297BD4BBBADBAE00008C928D418E311 /* PickerView.swift */,
-				CCBAE932A1D84F4667C0920420C375CE /* VRSlider.swift */,
-				2C4C893C214A40BEC55A7D0D41E0F630 /* VRSliderConfiguration.swift */,
-			);
-			name = Classes;
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
@@ -271,7 +271,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 325CBF929996EAE9D33715B8E366D655 /* Build configuration list for PBXNativeTarget "VRPicker" */;
 			buildPhases = (
-				D81D96050F6F6FF1101775AF040231BF /* Sources */,
+				75BFB2327C90F6761924529E3F9FA77A /* Sources */,
 				16C54AB3EFBB9A949701421D8CAB6ED6 /* Frameworks */,
 				DF74DF9D276605AC84793912467F4972 /* Headers */,
 			);
@@ -364,15 +364,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D81D96050F6F6FF1101775AF040231BF /* Sources */ = {
+		75BFB2327C90F6761924529E3F9FA77A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BA49CD09C981612918EC99CBAA036B0 /* HelperFunctions.swift in Sources */,
-				51435849C3F9129437BAA348474A4467 /* PickerView.swift in Sources */,
-				CA070BC25BAD650DAC8C44211B93F6C4 /* VRPicker-dummy.m in Sources */,
-				28F42D44D21C55E1C4FE5650CBF6B6A9 /* VRSlider.swift in Sources */,
-				957B2325498EA15A72349D9033F5A36A /* VRSliderConfiguration.swift in Sources */,
+				ED2DF21E07922A89C08144C8F9E13ECD /* HelperFunctions.swift in Sources */,
+				558693BA46439E0FE79838386AD88489 /* PickerView.swift in Sources */,
+				B2DFAAFBCFE42626285A591D0FFE85AB /* VRPicker-dummy.m in Sources */,
+				FA8FD579180BA1D802C18B7B48B66E83 /* VRPicker.swift in Sources */,
+				355D2DAEAE72CC9FC00B785AACF5EE9F /* VRPickerConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

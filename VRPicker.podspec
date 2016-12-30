@@ -31,7 +31,7 @@ VRPicker is a configurable and simple horizontal picker for iOS apps written ent
   s.source_files = 'VRPicker/Classes/**/*'
   
   # s.resource_bundles = {
-  #   'VRSlider' => ['VRPicker/Assets/*.png']
+  #   'VRPicker' => ['VRPicker/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
