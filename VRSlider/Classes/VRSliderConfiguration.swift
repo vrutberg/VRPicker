@@ -21,6 +21,8 @@ public struct VRSliderConfiguration {
     let selectedFontColor: UIColor
     let nonSelectedFont: UIFont
     let nonSelectedFontColor: UIColor
+
+    let selectionRadiusInPercent: Double
     let selectionBackgroundColor: UIColor
     
     let gradientColors: [UIColor]
@@ -37,6 +39,8 @@ public struct VRSliderConfiguration {
                 selectedFontColor: UIColor = .white,
                 nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
                 nonSelectedFontColor: UIColor = .black,
+
+                selectionRadiusInPercent: Double = 0.3,
                 selectionBackgroundColor: UIColor = .green,
 
                 gradientColors: [UIColor] = [UIColor.white.withAlphaComponent(0.8), UIColor.white.withAlphaComponent(0)],
@@ -52,6 +56,8 @@ public struct VRSliderConfiguration {
         self.selectedFontColor = selectedFontColor
         self.nonSelectedFont = nonSelectedFont
         self.nonSelectedFontColor = nonSelectedFontColor
+
+        self.selectionRadiusInPercent = selectionRadiusInPercent
         self.selectionBackgroundColor = selectionBackgroundColor
         
         self.gradientColors = gradientColors

@@ -112,7 +112,7 @@ public class VRSlider: UIView, PickerViewDelegate {
     }
 
     private func createCirclePath() -> UIBezierPath {
-        let radius = CGFloat(self.configuration.itemWidth / 3)
+        let radius = CGFloat(Double(self.configuration.itemWidth) * configuration.selectionRadiusInPercent)
         let y = (frame.height / CGFloat(2)) - radius
         let x = (frame.width / CGFloat(2)) - radius
 
