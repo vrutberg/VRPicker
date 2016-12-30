@@ -68,7 +68,7 @@ public class VRSlider: UIView {
     }
 
     internal lazy var selectionPickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedColor)
+        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -76,7 +76,7 @@ public class VRSlider: UIView {
     }()
 
     internal lazy var pickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedColor)
+        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -195,6 +195,6 @@ extension VRSlider: PickerViewDelegate {
     }
 
     func slider(_ sender: PickerView, didSelectIndex index: Int) {
-
+        
     }
 }

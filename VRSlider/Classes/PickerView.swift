@@ -14,11 +14,12 @@ protocol PickerViewDelegate: class {
     func slider(_ sender: PickerView, didSlideTo: CGPoint)
 }
 
-final class PickerView: UIView {
+final class PickerView: UIView, UIScrollViewDelegate {
     private let items: [String]
     private let itemWidth: Int
     private let itemFont: UIFont
     private let itemFontColor: UIColor
+    private let sliderVelocityCoefficient: Double
 
     var delegate: PickerViewDelegate?
 
@@ -28,11 +29,12 @@ final class PickerView: UIView {
         }
     }
 
-    init(items: [String], itemWidth: Int, itemFont: UIFont, itemFontColor: UIColor) {
+    init(items: [String], itemWidth: Int, itemFont: UIFont, itemFontColor: UIColor, sliderVelocityCoefficient: Double) {
         self.items = items
         self.itemWidth = itemWidth
         self.itemFont = itemFont
         self.itemFontColor = itemFontColor
+        self.sliderVelocityCoefficient = sliderVelocityCoefficient
 
         super.init(frame: .zero)
 
@@ -45,7 +47,7 @@ final class PickerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    internal var xContentInset: CGFloat {
+    private var xContentInset: CGFloat {
         return (frame.width - CGFloat(itemWidth)) / 2.0
     }
 
@@ -99,7 +101,7 @@ final class PickerView: UIView {
         selectedIndex = index
     }
 
-    internal func convert(contentOffsetToIndex contentOffset: CGFloat) -> Int {
+    private func convert(contentOffsetToIndex contentOffset: CGFloat) -> Int {
         let offsetX = contentOffset + xContentInset
 
         var itemIndex = Int(round(offsetX / CGFloat(itemWidth)))
@@ -113,7 +115,7 @@ final class PickerView: UIView {
         return itemIndex
     }
 
-    internal func convert(indexToPoint index: Int) -> CGPoint {
+    private func convert(indexToPoint index: Int) -> CGPoint {
         let itemX = CGFloat(itemWidth * index)
         return CGPoint(x: itemX - xContentInset, y: 0)
     }
@@ -182,17 +184,15 @@ final class PickerView: UIView {
 
         NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: scrollView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
     }
-}
 
-extension PickerView: UIScrollViewDelegate {
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let targetOffset = scrollView.contentOffset.x + velocity.x * 60.0
+    internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let targetOffset = scrollView.contentOffset.x + velocity.x * CGFloat(sliderVelocityCoefficient)
         let index = convert(contentOffsetToIndex: targetOffset)
 
         targetContentOffset.pointee = convert(indexToPoint: index)
     }
 
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = convert(contentOffsetToIndex: scrollView.contentOffset.x)
 
         delegate?.slider(self, didSlideTo: scrollView.contentOffset)

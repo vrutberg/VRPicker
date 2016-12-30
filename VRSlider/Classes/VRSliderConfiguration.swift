@@ -28,6 +28,7 @@ public struct VRSliderConfiguration {
     let gradientPosition: GradientPosition
     
     let itemWidth: Int
+    let sliderVelocityCoefficient: Double
     
     public init(values: [String] = ["1 år", "2 år", "3 år", "4 år", "5 år"],
                 defaultSelectedIndex: Int = 0,
@@ -42,7 +43,8 @@ public struct VRSliderConfiguration {
                 gradientWidthInPercent: Double = 0.4,
                 gradientPosition: GradientPosition = .below,
                 
-                itemWidth: Int = 100) {
+                itemWidth: Int = 100,
+                sliderVelocityCoefficient: Double = 60) {
         self.values = values
         self.defaultSelectedIndex = defaultSelectedIndex
         
@@ -57,5 +59,6 @@ public struct VRSliderConfiguration {
         self.gradientPosition = gradientPosition
         
         self.itemWidth = itemWidth
+        self.sliderVelocityCoefficient = sliderVelocityCoefficient
     }
 }
