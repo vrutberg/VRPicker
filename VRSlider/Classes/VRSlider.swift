@@ -12,7 +12,7 @@ public protocol VRSliderDelegate: class {
     func slider(_ sender: VRSlider, didSelectIndex index: Int)
 }
 
-public class VRSlider: UIView {
+public class VRSlider: UIView, PickerViewDelegate {
     private let configuration: VRSliderConfiguration
 
     public weak var delegate: VRSliderDelegate?
@@ -68,7 +68,7 @@ public class VRSlider: UIView {
         pickerView.layer.mask = createMaskingLayer()
     }
 
-    internal lazy var selectionPickerView: PickerView = {
+    private lazy var selectionPickerView: PickerView = {
         let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,7 @@ public class VRSlider: UIView {
         return pickerView
     }()
 
-    internal lazy var pickerView: PickerView = {
+    private lazy var pickerView: PickerView = {
         let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -174,15 +174,13 @@ public class VRSlider: UIView {
         matchSizeWithConstraints(view1: gradientContainerView, view2: self)
     }
 
-    
-}
+    // MARK: PickerViewDelegate
 
-extension VRSlider: PickerViewDelegate {
     func slider(_ sender: PickerView, didSlideTo: CGPoint) {
         selectionPickerView.scrollView.contentOffset.x = didSlideTo.x
     }
 
     func slider(_ sender: PickerView, didSelectIndex index: Int) {
-
+        self.selectedIndex = index
     }
 }
