@@ -16,7 +16,9 @@ public class VRSlider: UIView {
     private let configuration: VRSliderConfiguration
 
     public weak var delegate: VRSliderDelegate?
+
     private var maskingLayer: CAShapeLayer?
+    private var circleLayer: CAShapeLayer?
     
     private(set) var selectedIndex = 0 {
         didSet {
@@ -49,8 +51,6 @@ public class VRSlider: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // TODO(vrutberg):
-    // * this should probably be done in a fancier way...
     private func updateSubviews() {
         let gradientWidth = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
         
@@ -62,9 +62,10 @@ public class VRSlider: UIView {
 
         let newMaskingLayer = createMaskingLayer()
         selectionPickerView.layer.addSublayer(newMaskingLayer)
-        selectionPickerView.layer.mask = createAnotherMaskingLayer()
-        pickerView.layer.mask = createMaskingLayer()
         maskingLayer = newMaskingLayer
+
+        selectionPickerView.layer.mask = createCircleLayer()
+        pickerView.layer.mask = createMaskingLayer()
     }
 
     internal lazy var selectionPickerView: PickerView = {
@@ -104,11 +105,9 @@ public class VRSlider: UIView {
         return layer
     }
 
-    private func createAnotherMaskingLayer() -> CAShapeLayer {
+    private func createCircleLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
-
         layer.path = createCirclePath().cgPath
-
         return layer
     }
 
