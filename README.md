@@ -1,6 +1,6 @@
 # VRPicker
 
-[![CI Status](http://img.shields.io/travis/vrutberg/VRPicker.svg?style=flat)](https://travis-ci.org/Viktor Rutberg/VRPicker)
+[![CI Status](http://img.shields.io/travis/vrutberg/VRPicker.svg?style=flat)](https://travis-ci.org/vrutberg/VRPicker)
 [![Version](https://img.shields.io/cocoapods/v/VRPicker.svg?style=flat)](http://cocoapods.org/pods/VRPicker)
 [![License](https://img.shields.io/cocoapods/l/VRPicker.svg?style=flat)](http://cocoapods.org/pods/VRPicker)
 [![Platform](https://img.shields.io/cocoapods/p/VRPicker.svg?style=flat)](http://cocoapods.org/pods/VRPicker)
