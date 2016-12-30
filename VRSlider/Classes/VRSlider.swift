@@ -69,7 +69,7 @@ public class VRSlider: UIView, PickerViewDelegate {
     }
 
     private lazy var selectionPickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
+        let pickerView = PickerView(items: self.configuration.items, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -77,7 +77,7 @@ public class VRSlider: UIView, PickerViewDelegate {
     }()
 
     private lazy var pickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.values, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
+        let pickerView = PickerView(items: self.configuration.items, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 

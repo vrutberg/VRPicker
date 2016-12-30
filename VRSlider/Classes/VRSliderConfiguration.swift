@@ -14,13 +14,13 @@ public enum GradientPosition {
 }
 
 public struct VRSliderConfiguration {
-    let values: [String]
+    let items: [String]
     let defaultSelectedIndex: Int
     
     let selectedFont: UIFont
-    let selectedColor: UIColor
+    let selectedFontColor: UIColor
     let nonSelectedFont: UIFont
-    let nonSelectedColor: UIColor
+    let nonSelectedFontColor: UIColor
     let selectionBackgroundColor: UIColor
     
     let gradientColors: [UIColor]
@@ -30,28 +30,28 @@ public struct VRSliderConfiguration {
     let itemWidth: Int
     let sliderVelocityCoefficient: Double
     
-    public init(values: [String] = ["1 år", "2 år", "3 år", "4 år", "5 år"],
+    public init(items: [String] = ["1", "2", "3", "4", "5"],
                 defaultSelectedIndex: Int = 0,
 
                 selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 20),
-                selectedColor: UIColor = .white,
+                selectedFontColor: UIColor = .white,
                 nonSelectedFont: UIFont = UIFont.systemFont(ofSize: 14),
-                nonSelectedColor: UIColor = .black,
+                nonSelectedFontColor: UIColor = .black,
                 selectionBackgroundColor: UIColor = .green,
 
-                gradientColors: [UIColor] = [.lightGray, .white],
+                gradientColors: [UIColor] = [UIColor.white.withAlphaComponent(0.8), UIColor.white.withAlphaComponent(0)],
                 gradientWidthInPercent: Double = 0.4,
-                gradientPosition: GradientPosition = .below,
+                gradientPosition: GradientPosition = .above,
                 
                 itemWidth: Int = 100,
                 sliderVelocityCoefficient: Double = 60) {
-        self.values = values
+        self.items = items
         self.defaultSelectedIndex = defaultSelectedIndex
         
         self.selectedFont = selectedFont
-        self.selectedColor = selectedColor
+        self.selectedFontColor = selectedFontColor
         self.nonSelectedFont = nonSelectedFont
-        self.nonSelectedColor = nonSelectedColor
+        self.nonSelectedFontColor = nonSelectedFontColor
         self.selectionBackgroundColor = selectionBackgroundColor
         
         self.gradientColors = gradientColors

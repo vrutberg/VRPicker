@@ -14,9 +14,7 @@ class ViewController: UIViewController, VRSliderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let items = (1...10).map { return "\($0) år" }
-
-        let config = VRSliderConfiguration(values: items, defaultSelectedIndex: 1, gradientColors: [UIColor.white.withAlphaComponent(0.8), UIColor.white.withAlphaComponent(0)], gradientPosition: .above, itemWidth: 100)
+        let config = VRSliderConfiguration(items: (1...10).map { return "\($0) år" })
         
         let sliderView = VRSlider(with: config, frame: .zero)
 
