@@ -14,7 +14,7 @@ class ViewController: UIViewController, VRSliderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = VRSliderConfiguration(items: (1...10).map { return "\($0) år" })
+        let config = VRSliderConfiguration(items: (1...10).map { return "\($0)" })
         
         let sliderView = VRSlider(with: config, frame: .zero)
 
@@ -24,7 +24,7 @@ class ViewController: UIViewController, VRSliderDelegate {
         
         view.addSubview(sliderView)
         
-        NSLayoutConstraint(item: sliderView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: sliderView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .top, multiplier: 1, constant: 20).isActive = true
         
         NSLayoutConstraint(item: sliderView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
         
