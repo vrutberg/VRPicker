@@ -50,7 +50,7 @@ public class VRSlider: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func updateSubviews() {
         let gradientWidth = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
         
@@ -148,13 +148,13 @@ public class VRSlider: UIView {
         return layer
     }
     
-    func setupSelectionPickerView() {
+    private func setupSelectionPickerView() {
         addSubview(selectionPickerView)
         selectionPickerView.layer.backgroundColor = UIColor.green.cgColor
         matchSizeWithConstraints(view1: selectionPickerView, view2: self)
     }
 
-    func setupPickerView() {
+    private func setupPickerView() {
         addSubview(pickerView)
         pickerView.delegate = self
         matchSizeWithConstraints(view1: pickerView, view2: self)
