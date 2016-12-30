@@ -149,13 +149,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
 
-        NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: scrollView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: scrollView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        matchSizeWithConstraints(view1: scrollView, view2: self)
     }
 
     private func setupScrollViewContent() {
@@ -176,13 +170,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
             NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal, toItem: valueLabel, attribute: .height, multiplier: 1, constant: 0).isActive = true
         }
 
-        NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: stackView, attribute: .leading, relatedBy: .equal, toItem: scrollView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: stackView, attribute: .trailing, relatedBy: .equal, toItem: scrollView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-
-        NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: scrollView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        matchSizeWithConstraints(view1: stackView, view2: scrollView)
     }
 
     internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
