@@ -93,13 +93,8 @@ public class VRSlider: UIView {
     private func createMaskingLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
 
-        let radius = CGFloat(self.configuration.itemWidth / 3)
-        let y = (frame.height / CGFloat(2)) - radius
-        let x = (frame.width / CGFloat(2)) - radius
-
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: 0)
-        let circlePath = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
-        path.append(circlePath)
+        path.append(createCirclePath())
         path.usesEvenOddFillRule = true
 
         layer.path = path.cgPath
@@ -112,15 +107,17 @@ public class VRSlider: UIView {
     private func createAnotherMaskingLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
 
+        layer.path = createCirclePath().cgPath
+
+        return layer
+    }
+
+    private func createCirclePath() -> UIBezierPath {
         let radius = CGFloat(self.configuration.itemWidth / 3)
         let y = (frame.height / CGFloat(2)) - radius
         let x = (frame.width / CGFloat(2)) - radius
 
-        let circlePath = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
-
-        layer.path = circlePath.cgPath
-
-        return layer
+        return UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
     }
 
     private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
@@ -195,6 +192,6 @@ extension VRSlider: PickerViewDelegate {
     }
 
     func slider(_ sender: PickerView, didSelectIndex index: Int) {
-        
+
     }
 }
