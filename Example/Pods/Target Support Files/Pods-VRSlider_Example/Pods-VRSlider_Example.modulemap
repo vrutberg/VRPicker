@@ -1,6 +1,0 @@
-framework module Pods_VRSlider_Example {
-  umbrella header "Pods-VRSlider_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

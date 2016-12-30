@@ -1,16 +1,16 @@
 PODS:
-  - VRSlider (0.1.0)
+  - VRPicker (0.1.0)
 
 DEPENDENCIES:
-  - VRSlider (from `../`)
+  - VRPicker (from `../`)
 
 EXTERNAL SOURCES:
-  VRSlider:
+  VRPicker:
     :path: ../
 
 SPEC CHECKSUMS:
-  VRSlider: e10605aee9ed56aa4fff73a80798876b18e5f2c1
+  VRPicker: 227bdfbd09475d2f010b825f3a40492c10470c2c
 
-PODFILE CHECKSUM: 7f233274cf9593fe6ce13042999ff9c2e33498cc
+PODFILE CHECKSUM: 105ef405ebe8a005399fdbcbf3a9b502cd02aae4
 
 COCOAPODS: 1.1.1

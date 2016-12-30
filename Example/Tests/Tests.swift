@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import VRSlider
+import VRPicker
 
 class Tests: XCTestCase {
     

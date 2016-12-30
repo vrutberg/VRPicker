@@ -1,0 +1,6 @@
+framework module VRPicker {
+  umbrella header "VRPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

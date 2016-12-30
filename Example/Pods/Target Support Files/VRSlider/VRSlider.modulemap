@@ -1,6 +1,0 @@
-framework module VRSlider {
-  umbrella header "VRSlider-umbrella.h"
-
-  export *
-  module * { export * }
-}
