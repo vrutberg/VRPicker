@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:VRSlider.xcodeproj">
+      location = "self:VRPicker.xcodeproj">
    </FileRef>
 </Workspace>
