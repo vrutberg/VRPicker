@@ -29,13 +29,7 @@ let config = VRPickerConfiguration(items: ["1", "2", "3"])
 let pickerView = VRPicker(with: config, frame: .zero)
 ```
 
-The `VRPickerDelegate` protocol can be implemented to receive information:
-
-```swift
-public protocol VRPickerDelegate: class {
-    func picker(_ sender: VRPicker, didSelectIndex index: Int)
-}
-```
+The `VRPickerDelegate` protocol can be implemented to receive updates about which item is currently selected.
 
 ### Configuration
 
