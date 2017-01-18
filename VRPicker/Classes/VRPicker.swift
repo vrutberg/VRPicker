@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public protocol VRPickerDelegate: class {
-    func slider(_ sender: VRPicker, didSelectIndex index: Int)
+    func picker(_ sender: VRPicker, didSelectIndex index: Int)
 }
 
 public class VRPicker: UIView, PickerViewDelegate {
@@ -22,7 +22,7 @@ public class VRPicker: UIView, PickerViewDelegate {
     
     private(set) var selectedIndex = 0 {
         didSet {
-            delegate?.slider(self, didSelectIndex: selectedIndex)
+            delegate?.picker(self, didSelectIndex: selectedIndex)
         }
     }
 
@@ -176,11 +176,11 @@ public class VRPicker: UIView, PickerViewDelegate {
 
     // MARK: PickerViewDelegate
 
-    func slider(_ sender: PickerView, didSlideTo: CGPoint) {
+    func picker(_ sender: PickerView, didSlideTo: CGPoint) {
         selectionPickerView.scrollView.contentOffset.x = didSlideTo.x
     }
 
-    func slider(_ sender: PickerView, didSelectIndex index: Int) {
+    func picker(_ sender: PickerView, didSelectIndex index: Int) {
         self.selectedIndex = index
     }
 }

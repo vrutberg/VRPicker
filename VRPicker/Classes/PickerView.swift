@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol PickerViewDelegate: class {
-    func slider(_ sender: PickerView, didSelectIndex index: Int)
-    func slider(_ sender: PickerView, didSlideTo: CGPoint)
+    func picker(_ sender: PickerView, didSelectIndex index: Int)
+    func picker(_ sender: PickerView, didSlideTo: CGPoint)
 }
 
 final class PickerView: UIView, UIScrollViewDelegate {
@@ -25,7 +25,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
 
     private(set) var selectedIndex = 0 {
         didSet {
-            delegate?.slider(self, didSelectIndex: selectedIndex)
+            delegate?.picker(self, didSelectIndex: selectedIndex)
         }
     }
 
@@ -183,7 +183,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
     internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = convert(contentOffsetToIndex: scrollView.contentOffset.x)
 
-        delegate?.slider(self, didSlideTo: scrollView.contentOffset)
+        delegate?.picker(self, didSlideTo: scrollView.contentOffset)
 
         markItemAsSelected(at: index)
     }

@@ -14,28 +14,28 @@ class ViewController: UIViewController, VRPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = VRPickerConfiguration(items: (1...10).map { return "\($0)" })
+        let config = VRPickerConfiguration(items: (1...10).map { return "\($0)" }, selectionRadiusInPercent: 0.5, itemWidth: 50)
         
-        let sliderView = VRPicker(with: config, frame: .zero)
+        let pickerView = VRPicker(with: config, frame: .zero)
 
-        sliderView.backgroundColor = .white
-        sliderView.delegate = self
-        sliderView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.backgroundColor = .white
+        pickerView.delegate = self
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(sliderView)
+        view.addSubview(pickerView)
         
-        NSLayoutConstraint(item: sliderView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .top, multiplier: 1, constant: 20).isActive = true
+        NSLayoutConstraint(item: pickerView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .top, multiplier: 1, constant: 20).isActive = true
         
-        NSLayoutConstraint(item: sliderView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: pickerView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0).isActive = true
         
-        NSLayoutConstraint(item: sliderView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: pickerView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
         
-        NSLayoutConstraint(item: sliderView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100).isActive = true
+        NSLayoutConstraint(item: pickerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50).isActive = true
         
         view.layoutIfNeeded()
     }
     
-    func slider(_ sender: VRPicker, didSelectIndex index: Int) {
+    func picker(_ sender: VRPicker, didSelectIndex index: Int) {
         print("didSelectIndex: \(index)")
     }
 }
