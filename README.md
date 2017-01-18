@@ -7,7 +7,7 @@
 
 ## Example
 
-[![Example](Assets/example.gif)
+[Example](Assets/example.gif)
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
