@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'VRPicker'
-  s.version          = '2.0.0'
-  s.summary          = 'A configurable slider for iOS apps written in Swift'
+  s.version          = '3.0.0'
+  s.summary          = 'A configurable picker for iOS apps written in Swift'
 
   s.description      = <<-DESC
 VRPicker is a configurable and simple horizontal picker for iOS apps written entirely in Swift.
