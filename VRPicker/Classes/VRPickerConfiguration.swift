@@ -13,8 +13,10 @@ public enum GradientPosition {
     case below
 }
 
+public protocol VRPickerItem: CustomStringConvertible {}
+
 public struct VRPickerConfiguration {
-    let items: [String]
+    let items: [VRPickerItem]
     let defaultSelectedIndex: Int
     
     let selectedFont: UIFont
@@ -32,7 +34,7 @@ public struct VRPickerConfiguration {
     let itemWidth: Int
     let sliderVelocityCoefficient: Double
     
-    public init(items: [String] = ["1", "2", "3", "4", "5"],
+    public init(items: [VRPickerItem],
                 defaultSelectedIndex: Int = 0,
 
                 selectedFont: UIFont = UIFont.boldSystemFont(ofSize: 20),

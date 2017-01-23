@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public protocol VRPickerDelegate: class {
-    func picker(_ sender: VRPicker, didSelectIndex index: Int)
+    func picker<T>(_ sender: VRPicker, didSelect item: T)
 }
 
 public class VRPicker: UIView, PickerViewDelegate {
@@ -22,7 +22,7 @@ public class VRPicker: UIView, PickerViewDelegate {
     
     private(set) var selectedIndex = 0 {
         didSet {
-            delegate?.picker(self, didSelectIndex: selectedIndex)
+            delegate?.picker(self, didSelect: configuration.items[selectedIndex])
         }
     }
 
@@ -68,8 +68,12 @@ public class VRPicker: UIView, PickerViewDelegate {
         pickerView.layer.mask = createMaskingLayer()
     }
 
+    private var itemsAsStrings: [String] {
+        return configuration.items.map { $0.description }
+    }
+
     private lazy var selectionPickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.items, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
+        let pickerView = PickerView(items: self.itemsAsStrings, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -77,7 +81,7 @@ public class VRPicker: UIView, PickerViewDelegate {
     }()
 
     private lazy var pickerView: PickerView = {
-        let pickerView = PickerView(items: self.configuration.items, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
+        let pickerView = PickerView(items: self.itemsAsStrings, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -121,11 +125,7 @@ public class VRPicker: UIView, PickerViewDelegate {
 
     private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
     private lazy var rightGradientLayer: CALayer = self.createGradientLayer(ofType: .right)
-    
-    private enum GradientLayerType {
-        case left
-        case right
-    }
+
     
     private func createGradientLayer(ofType type: GradientLayerType) -> CAGradientLayer {
         let layer = CAGradientLayer()
@@ -182,5 +182,10 @@ public class VRPicker: UIView, PickerViewDelegate {
 
     func picker(_ sender: PickerView, didSelectIndex index: Int) {
         self.selectedIndex = index
+    }
+
+    private enum GradientLayerType {
+        case left
+        case right
     }
 }
