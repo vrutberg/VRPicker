@@ -25,7 +25,7 @@ pod "VRPicker"
 The `VRPicker` view is instantiated with an instance of `VRPickerConfiguration` and a `CGRect` for frame:
 
 ```swift
-let config = VRPickerConfiguration(items: ["1", "2", "3"])
+let config = VRPickerConfiguration(items: ...)
 let pickerView = VRPicker(with: config, frame: .zero)
 ```
 
@@ -37,9 +37,9 @@ The `VRPickerDelegate` protocol can be implemented to receive updates about whic
 
 All configuration properties have default values.
 
-#### `items: [String]` (default value: `["1", "2", "3", "4", "5"]`)
+#### `items: [VRPickerItem]` (no default value)
 
-The list of items to display in the picker. 
+The list of items to display in the picker. The items must conform to the protocol `VRPickerItem`, which extends `CustomStringConvertible`.
 
 #### `defaultSelectedIndex: Int` (default value: `0`)
 
