@@ -43,7 +43,7 @@ class ViewController: UIViewController, VRPickerDelegate {
         view.layoutIfNeeded()
     }
     
-    func picker<PickerItem>(_ sender: VRPicker, didSelect item: PickerItem) {
+    func picker<T>(_ sender: VRPicker, didSelect item: T) {
         print("didSelectItem: \(item)")
     }
 }
