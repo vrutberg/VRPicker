@@ -9,12 +9,20 @@
 import UIKit
 import VRPicker
 
+struct PickerItem: VRPickerItem {
+    let number: Int
+
+    var description: String {
+        return "\(number)"
+    }
+}
+
 class ViewController: UIViewController, VRPickerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = VRPickerConfiguration(items: (1...10).map { return "\($0)" }, selectionRadiusInPercent: 0.5, itemWidth: 50)
+        let config = VRPickerConfiguration(items: (1...10).map { PickerItem(number: $0) }, selectionRadiusInPercent: 0.5, itemWidth: 50)
         
         let pickerView = VRPicker(with: config, frame: .zero)
 
@@ -35,8 +43,8 @@ class ViewController: UIViewController, VRPickerDelegate {
         view.layoutIfNeeded()
     }
     
-    func picker(_ sender: VRPicker, didSelectIndex index: Int) {
-        print("didSelectIndex: \(index)")
+    func picker<PickerItem>(_ sender: VRPicker, didSelect item: PickerItem) {
+        print("didSelectItem: \(item)")
     }
 }
 
