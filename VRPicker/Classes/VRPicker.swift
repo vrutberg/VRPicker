@@ -150,7 +150,7 @@ public class VRPicker: UIView, PickerViewDelegate {
     
     private func setupSelectionPickerView() {
         addSubview(selectionPickerView)
-        selectionPickerView.layer.backgroundColor = UIColor.green.cgColor
+        selectionPickerView.layer.backgroundColor = configuration.selectionBackgroundColor.cgColor
         matchSizeWithConstraints(view1: selectionPickerView, view2: self)
     }
 
