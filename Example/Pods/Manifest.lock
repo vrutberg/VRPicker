@@ -1,5 +1,5 @@
 PODS:
-  - VRPicker (0.1.0)
+  - VRPicker (3.0.0)
 
 DEPENDENCIES:
   - VRPicker (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  VRPicker: 227bdfbd09475d2f010b825f3a40492c10470c2c
+  VRPicker: 3aba743e7145b845ebe922ee78151d66103869f2
 
 PODFILE CHECKSUM: 105ef405ebe8a005399fdbcbf3a9b502cd02aae4
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
