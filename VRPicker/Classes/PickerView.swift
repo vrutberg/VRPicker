@@ -20,21 +20,25 @@ final class PickerView: UIView, UIScrollViewDelegate {
     private let itemFont: UIFont
     private let itemFontColor: UIColor
     private let sliderVelocityCoefficient: Double
+    private let defaultSelectedIndex: Int
+    private var didSetDefault = false
 
     var delegate: PickerViewDelegate?
 
-    private(set) var selectedIndex = 0 {
-        didSet {
-            delegate?.picker(self, didSelectIndex: selectedIndex)
-        }
-    }
+    private(set) var selectedIndex: Int = 0
 
-    init(items: [String], itemWidth: Int, itemFont: UIFont, itemFontColor: UIColor, sliderVelocityCoefficient: Double) {
+    init(items: [String],
+         itemWidth: Int,
+         itemFont: UIFont,
+         itemFontColor: UIColor,
+         sliderVelocityCoefficient: Double,
+         defaultSelectedIndex: Int) {
         self.items = items
         self.itemWidth = itemWidth
         self.itemFont = itemFont
         self.itemFontColor = itemFontColor
         self.sliderVelocityCoefficient = sliderVelocityCoefficient
+        self.defaultSelectedIndex = defaultSelectedIndex
 
         super.init(frame: .zero)
 
@@ -91,14 +95,17 @@ final class PickerView: UIView, UIScrollViewDelegate {
 
     public func set(selectedIndex index: Int, animated: Bool = true) {
         scroll(toIndex: index, animated: animated)
+        markItemAsSelected(at: index)
     }
 
-    public func markItemAsSelected(at index: Int) {
+    private func markItemAsSelected(at index: Int) {
         guard selectedIndex != index else {
             return
         }
 
         selectedIndex = index
+
+        delegate?.picker(self, didSelectIndex: selectedIndex)
     }
 
     private func convert(contentOffsetToIndex contentOffset: CGFloat) -> Int {
@@ -123,8 +130,14 @@ final class PickerView: UIView, UIScrollViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        set(selectedIndex: selectedIndex, animated: false)
         scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
+
+        if !didSetDefault {
+            set(selectedIndex: defaultSelectedIndex, animated: false)
+            didSetDefault = true
+        } else {
+            set(selectedIndex: selectedIndex, animated: false)
+        }
     }
 
     @objc private func scrollViewWasTapped(_ sender: UITapGestureRecognizer) {

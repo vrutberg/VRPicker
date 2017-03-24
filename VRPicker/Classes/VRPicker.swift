@@ -19,17 +19,14 @@ public class VRPicker: UIView, PickerViewDelegate {
 
     private var maskingLayer: CAShapeLayer?
     private var circleLayer: CAShapeLayer?
+    private var didSetDefaultIndex = false
     
-    private(set) var selectedIndex = 0 {
-        didSet {
-            delegate?.picker(self, didSelect: configuration.items[selectedIndex])
-        }
-    }
+    private(set) var selectedIndex: Int
 
     public init(with configuration: VRPickerConfiguration, frame: CGRect) {
         self.configuration = configuration
-        self.selectedIndex = configuration.defaultSelectedIndex
-        
+        selectedIndex = configuration.defaultSelectedIndex
+
         super.init(frame: frame)
 
         setupGradientContainerView()
@@ -73,7 +70,12 @@ public class VRPicker: UIView, PickerViewDelegate {
     }
 
     private lazy var selectionPickerView: PickerView = {
-        let pickerView = PickerView(items: self.itemsAsStrings, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.selectedFont, itemFontColor: self.configuration.selectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
+        let pickerView = PickerView(items: self.itemsAsStrings,
+                                    itemWidth: self.configuration.itemWidth,
+                                    itemFont: self.configuration.selectedFont,
+                                    itemFontColor: self.configuration.selectedFontColor,
+                                    sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient,
+                                    defaultSelectedIndex: self.configuration.defaultSelectedIndex)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -81,7 +83,12 @@ public class VRPicker: UIView, PickerViewDelegate {
     }()
 
     private lazy var pickerView: PickerView = {
-        let pickerView = PickerView(items: self.itemsAsStrings, itemWidth: self.configuration.itemWidth, itemFont: self.configuration.nonSelectedFont, itemFontColor: self.configuration.nonSelectedFontColor, sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient)
+        let pickerView = PickerView(items: self.itemsAsStrings,
+                                    itemWidth: self.configuration.itemWidth,
+                                    itemFont: self.configuration.nonSelectedFont,
+                                    itemFontColor: self.configuration.nonSelectedFontColor,
+                                    sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient,
+                                    defaultSelectedIndex: self.configuration.defaultSelectedIndex)
 
         pickerView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -150,13 +157,17 @@ public class VRPicker: UIView, PickerViewDelegate {
     
     private func setupSelectionPickerView() {
         addSubview(selectionPickerView)
+
         selectionPickerView.layer.backgroundColor = configuration.selectionBackgroundColor.cgColor
+
         matchSizeWithConstraints(view1: selectionPickerView, view2: self)
     }
 
     private func setupPickerView() {
         addSubview(pickerView)
+
         pickerView.delegate = self
+
         matchSizeWithConstraints(view1: pickerView, view2: self)
     }
         
@@ -181,7 +192,8 @@ public class VRPicker: UIView, PickerViewDelegate {
     }
 
     func picker(_ sender: PickerView, didSelectIndex index: Int) {
-        self.selectedIndex = index
+        selectedIndex = index
+        delegate?.picker(self, didSelect: configuration.items[selectedIndex])
     }
 
     private enum GradientLayerType {

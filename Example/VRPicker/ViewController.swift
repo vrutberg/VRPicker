@@ -13,7 +13,7 @@ struct PickerItem: VRPickerItem {
     let number: Int
 
     var description: String {
-        return "\(number)"
+        return "\(number) yrs"
     }
 }
 
@@ -22,7 +22,10 @@ class ViewController: UIViewController, VRPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = VRPickerConfiguration(items: (1...10).map { PickerItem(number: $0) }, selectionRadiusInPercent: 0.5, itemWidth: 50)
+        let config = VRPickerConfiguration(items: (1...100).map { PickerItem(number: $0) },
+                                           defaultSelectedIndex: 99,
+                                           selectionRadiusInPercent: 0.5,
+                                           itemWidth: 80)
         
         let pickerView = VRPicker(with: config, frame: .zero)
 
@@ -38,9 +41,7 @@ class ViewController: UIViewController, VRPickerDelegate {
         
         NSLayoutConstraint(item: pickerView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
         
-        NSLayoutConstraint(item: pickerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50).isActive = true
-        
-        view.layoutIfNeeded()
+        NSLayoutConstraint(item: pickerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80).isActive = true
     }
     
     func picker<T>(_ sender: VRPicker, didSelect item: T) {
