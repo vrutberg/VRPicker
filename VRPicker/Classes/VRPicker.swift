@@ -8,14 +8,8 @@
 import Foundation
 import UIKit
 
-public protocol VRPickerDelegate: class {
-    func picker<T>(_ sender: VRPicker, didSelect item: T)
-}
-
-public class VRPicker: UIView, PickerViewDelegate {
-    private let configuration: VRPickerConfiguration
-
-    public weak var delegate: VRPickerDelegate?
+public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
+    private let configuration: VRPickerConfiguration<T>
 
     private var maskingLayer: CAShapeLayer?
     private var circleLayer: CAShapeLayer?
@@ -23,7 +17,9 @@ public class VRPicker: UIView, PickerViewDelegate {
     
     private(set) var selectedIndex: Int
 
-    public init(with configuration: VRPickerConfiguration, frame: CGRect) {
+    public var didSelectItem: (T) -> Void = { _ in }
+
+    public init(with configuration: VRPickerConfiguration<T>, frame: CGRect) {
         self.configuration = configuration
         selectedIndex = configuration.defaultSelectedIndex
 
@@ -193,7 +189,7 @@ public class VRPicker: UIView, PickerViewDelegate {
 
     func picker(_ sender: PickerView, didSelectIndex index: Int) {
         selectedIndex = index
-        delegate?.picker(self, didSelect: configuration.items[selectedIndex])
+        didSelectItem(configuration.items[selectedIndex])
     }
 
     private enum GradientLayerType {

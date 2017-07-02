@@ -22,14 +22,26 @@ pod "VRPicker"
 
 ## Usage
 
-The `VRPicker` view is instantiated with an instance of `VRPickerConfiguration` and a `CGRect` for frame:
+The `VRPicker` class is generic, and accepts one type parameter which must be a subclass of `VRPickerItem`. The type you pass in here will be your item class. `VRPicker` is instantiated with an instance of `VRPickerConfiguration` (which also accepts one type parameter), and a `CGRect` for frame:
 
 ```swift
-let config = VRPickerConfiguration(items: ...)
-let pickerView = VRPicker(with: config, frame: .zero)
+struct PickerItem: VRPickerItem {
+  let number: Int
+
+  var description: String {
+    return "\(number) yrs"
+  }
+}
+
+let config = VRPickerConfiguration<PickerItem>(items: ...)
+let pickerView = VRPicker<PickerItem>(with: config, frame: .zero)
+
+pickerView.didSelectItem = { item in
+  print(item)
+}
 ```
 
-The `VRPickerDelegate` protocol can be implemented to receive updates about which item is currently selected.
+As done in the example above, the `didSelectItem` function property should be set to receive updates about which item is currently selected.
 
 ### Configuration
 
@@ -37,7 +49,7 @@ The `VRPickerDelegate` protocol can be implemented to receive updates about whic
 
 All configuration properties have default values.
 
-#### `items: [VRPickerItem]` (no default value)
+#### `items: [T]` (no default value)
 
 The list of items to display in the picker. The items must conform to the protocol `VRPickerItem`, which extends `CustomStringConvertible`.
 

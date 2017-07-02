@@ -17,20 +17,20 @@ struct PickerItem: VRPickerItem {
     }
 }
 
-class ViewController: UIViewController, VRPickerDelegate {
+class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = VRPickerConfiguration(items: (1...100).map { PickerItem(number: $0) },
-                                           defaultSelectedIndex: 99,
-                                           selectionRadiusInPercent: 0.5,
-                                           itemWidth: 80)
+        let config = VRPickerConfiguration<PickerItem>(items: (1...100).map { PickerItem(number: $0) },
+                                                       defaultSelectedIndex: 99,
+                                                       selectionRadiusInPercent: 0.5,
+                                                       itemWidth: 80)
         
-        let pickerView = VRPicker(with: config, frame: .zero)
+        let pickerView = VRPicker<PickerItem>(with: config, frame: .zero)
 
         pickerView.backgroundColor = .white
-        pickerView.delegate = self
+        pickerView.didSelectItem = self.pickerDidSelect
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(pickerView)
@@ -44,7 +44,7 @@ class ViewController: UIViewController, VRPickerDelegate {
         NSLayoutConstraint(item: pickerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80).isActive = true
     }
     
-    func picker<T>(_ sender: VRPicker, didSelect item: T) {
+    func pickerDidSelect(_ item: PickerItem) {
         print("didSelectItem: \(item)")
     }
 }
