@@ -193,6 +193,7 @@
 				607FACE31AFB9204008FA782 /* Resources */,
 				F7176B47038575E62987B675 /* [CP] Embed Pods Frameworks */,
 				09BE27C9ED40B8E10764ABB2 /* [CP] Copy Pods Resources */,
+				7F9685AC1F8EB595000E7978 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -329,6 +330,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VRPicker_Example/Pods-VRPicker_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7F9685AC1F8EB595000E7978 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		F7176B47038575E62987B675 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

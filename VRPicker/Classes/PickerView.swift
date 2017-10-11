@@ -23,7 +23,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
     private let defaultSelectedIndex: Int
     private var didSetDefault = false
 
-    var delegate: PickerViewDelegate?
+    weak var delegate: PickerViewDelegate?
 
     private(set) var selectedIndex: Int = 0
 
@@ -46,7 +46,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
         setupScrollView()
         setupScrollViewContent()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -178,15 +178,21 @@ final class PickerView: UIView, UIScrollViewDelegate {
 
             stackView.addArrangedSubview(valueLabel)
 
-            NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal, toItem: scrollView, attribute: .height, multiplier: 1, constant: 0).isActive = true
+            NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal,
+                               toItem: scrollView, attribute: .height, multiplier: 1,
+                               constant: 0).isActive = true
 
-            NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal, toItem: valueLabel, attribute: .height, multiplier: 1, constant: 0).isActive = true
+            NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal,
+                               toItem: valueLabel, attribute: .height, multiplier: 1,
+                               constant: 0).isActive = true
         }
 
         matchSizeWithConstraints(view1: stackView, view2: scrollView)
     }
 
-    internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    internal func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                            withVelocity velocity: CGPoint,
+                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let targetOffset = scrollView.contentOffset.x + velocity.x * CGFloat(sliderVelocityCoefficient)
         let index = convert(contentOffsetToIndex: targetOffset)
 

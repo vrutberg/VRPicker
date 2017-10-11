@@ -18,7 +18,7 @@ public protocol VRPickerItem: CustomStringConvertible {}
 public struct VRPickerConfiguration<T: VRPickerItem> {
     let items: [T]
     let defaultSelectedIndex: Int
-    
+
     let selectedFont: UIFont
     let selectedFontColor: UIColor
     let nonSelectedFont: UIFont
@@ -26,14 +26,14 @@ public struct VRPickerConfiguration<T: VRPickerItem> {
 
     let selectionRadiusInPercent: Double
     let selectionBackgroundColor: UIColor
-    
+
     let gradientColors: [UIColor]
     let gradientWidthInPercent: Double
     let gradientPosition: GradientPosition
-    
+
     let itemWidth: Int
     let sliderVelocityCoefficient: Double
-    
+
     public init(items: [T],
                 defaultSelectedIndex: Int = 0,
 
@@ -45,15 +45,16 @@ public struct VRPickerConfiguration<T: VRPickerItem> {
                 selectionRadiusInPercent: Double = 0.3,
                 selectionBackgroundColor: UIColor = .green,
 
-                gradientColors: [UIColor] = [UIColor.white.withAlphaComponent(0.8), UIColor.white.withAlphaComponent(0)],
+                gradientColors: [UIColor] = [UIColor.white.withAlphaComponent(0.8),
+                                             UIColor.white.withAlphaComponent(0)],
                 gradientWidthInPercent: Double = 0.4,
                 gradientPosition: GradientPosition = .above,
-                
+
                 itemWidth: Int = 100,
                 sliderVelocityCoefficient: Double = 60) {
         self.items = items
         self.defaultSelectedIndex = defaultSelectedIndex
-        
+
         self.selectedFont = selectedFont
         self.selectedFontColor = selectedFontColor
         self.nonSelectedFont = nonSelectedFont
@@ -61,11 +62,11 @@ public struct VRPickerConfiguration<T: VRPickerItem> {
 
         self.selectionRadiusInPercent = selectionRadiusInPercent
         self.selectionBackgroundColor = selectionBackgroundColor
-        
+
         self.gradientColors = gradientColors
         self.gradientWidthInPercent = gradientWidthInPercent
         self.gradientPosition = gradientPosition
-        
+
         self.itemWidth = itemWidth
         self.sliderVelocityCoefficient = sliderVelocityCoefficient
     }

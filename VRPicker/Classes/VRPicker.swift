@@ -14,7 +14,7 @@ public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
     private var maskingLayer: CAShapeLayer?
     private var circleLayer: CAShapeLayer?
     private var didSetDefaultIndex = false
-    
+
     private(set) var selectedIndex: Int
 
     public var didSelectItem: (T) -> Void = { _ in }
@@ -39,16 +39,17 @@ public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
             sendSubview(toBack: gradientContainerView)
         }
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     private func updateSubviews() {
-        let gradientWidth = Int(Double(self.frame.width) * self.configuration.gradientWidthInPercent)
-        
-        leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(self.frame.height))
-        rightGradientLayer.frame = CGRect(x: Int(self.frame.width) - gradientWidth, y: 0, width: gradientWidth, height: Int(self.frame.height))
+        let gradientWidth = Int(Double(frame.width) * configuration.gradientWidthInPercent)
+
+        leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(frame.height))
+        rightGradientLayer.frame = CGRect(x: Int(frame.width) - gradientWidth, y: 0,
+                                          width: gradientWidth, height: Int(frame.height))
 
         maskingLayer?.removeFromSuperlayer()
         maskingLayer = nil
@@ -100,8 +101,9 @@ public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
 
     private func createMaskingLayer() -> CAShapeLayer {
         let layer = CAShapeLayer()
+        let roundedRect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
 
-        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), cornerRadius: 0)
+        let path = UIBezierPath(roundedRect: roundedRect, cornerRadius: 0)
         path.append(createCirclePath())
         path.usesEvenOddFillRule = true
 
@@ -123,18 +125,19 @@ public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
         let y = (frame.height / CGFloat(2)) - radius
         let x = (frame.width / CGFloat(2)) - radius
 
-        return UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius), cornerRadius: radius)
+        let roundedRect = CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius)
+
+        return UIBezierPath(roundedRect: roundedRect, cornerRadius: radius)
     }
 
     private lazy var leftGradientLayer: CALayer = self.createGradientLayer(ofType: .left)
     private lazy var rightGradientLayer: CALayer = self.createGradientLayer(ofType: .right)
 
-    
     private func createGradientLayer(ofType type: GradientLayerType) -> CAGradientLayer {
         let layer = CAGradientLayer()
-        
+
         layer.frame = .zero
-        
+
         switch type {
         case .left:
             layer.startPoint = CGPoint(x: 0, y: 0)
@@ -144,13 +147,13 @@ public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
             layer.startPoint = CGPoint(x: 1.0, y: 0)
             layer.endPoint = CGPoint(x: 0, y: 0)
         }
-        
+
         layer.colors = self.configuration.gradientColors.map { $0.cgColor }
         layer.locations = [0.0, 1.0]
-        
+
         return layer
     }
-    
+
     private func setupSelectionPickerView() {
         addSubview(selectionPickerView)
 
@@ -166,7 +169,7 @@ public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
 
         matchSizeWithConstraints(view1: pickerView, view2: self)
     }
-        
+
     override public func layoutSubviews() {
         super.layoutSubviews()
         updateSubviews()
