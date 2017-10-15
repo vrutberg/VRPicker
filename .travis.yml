@@ -13,3 +13,5 @@ before_install:
 script:
 - set -o pipefail && xcodebuild test -workspace Example/VRPicker.xcworkspace -scheme VRPicker-Example -sdk iphonesimulator11.0 ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 8,OS=11.0" | xcpretty
 - pod lib lint
+notifications:
+  email: false
