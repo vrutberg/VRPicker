@@ -2,8 +2,8 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9.0
-xcode_sdk: iphonesimulator11
+osx_image: xcode9
+xcode_sdk: iphonesimulator11.0
 language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
@@ -11,5 +11,5 @@ before_install:
 - gem install cocoapods
 - pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -workspace Example/VRPicker.xcworkspace -scheme VRPicker-Example -sdk iphonesimulator11 ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 8,OS=11.0" | xcpretty
+- set -o pipefail && xcodebuild test -workspace Example/VRPicker.xcworkspace -scheme VRPicker-Example -sdk iphonesimulator11.0 ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 8,OS=11.0" | xcpretty
 - pod lib lint
