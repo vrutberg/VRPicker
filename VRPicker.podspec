@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'VRPicker'
-  s.version          = '3.0.0'
+  s.version          = '3.0.1'
   s.summary          = 'A configurable picker for iOS apps written in Swift'
 
   s.description      = <<-DESC
