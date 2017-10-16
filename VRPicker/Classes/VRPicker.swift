@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class VRPicker<T: VRPickerItem>: UIView, PickerViewDelegate {
+public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
     private let configuration: VRPickerConfiguration<T>
 
     private var maskingLayer: CAShapeLayer?
