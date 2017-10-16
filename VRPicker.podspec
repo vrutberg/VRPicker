@@ -15,5 +15,6 @@ VRPicker is a configurable and simple horizontal picker for iOS apps written ent
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'VRPicker/Classes/**/*'
+  s.resources = 'VRPicker/Resources/**/*'
   s.frameworks = 'UIKit'
 end

@@ -14,7 +14,7 @@ protocol PickerViewDelegate: class {
     func picker(_ sender: PickerView, didSlideTo: CGPoint)
 }
 
-final class PickerView: UIView, UIScrollViewDelegate {
+final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private let items: [String]
     private let itemWidth: Int
     private let itemFont: UIFont
@@ -42,9 +42,10 @@ final class PickerView: UIView, UIScrollViewDelegate {
 
         super.init(frame: .zero)
 
-        addSubview(scrollView)
-        setupScrollView()
-        setupScrollViewContent()
+//        addSubview(scrollView)
+//        setupScrollView()
+//        setupScrollViewContent()
+        setupCollectionView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -54,6 +55,28 @@ final class PickerView: UIView, UIScrollViewDelegate {
     private var xContentInset: CGFloat {
         return (frame.width - CGFloat(itemWidth)) / 2.0
     }
+
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+
+        layout.itemSize = CGSize(width: self.itemWidth, height: self.itemWidth)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
+        collectionView.register(UINib(nibName: "PickerItemCollectionViewCell",
+                                      bundle: Bundle(for: PickerView.self)),
+                                forCellWithReuseIdentifier: "PickerItemCollectionViewCell")
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
+
+        return collectionView
+    }()
 
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -156,38 +179,63 @@ final class PickerView: UIView, UIScrollViewDelegate {
         set(selectedIndex: itemIndex)
     }
 
-    private func setupScrollView() {
-        addSubview(scrollView)
+    private func setupCollectionView() {
+        addSubview(collectionView)
 
-        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
-        singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
-
-        matchSizeWithConstraints(view1: scrollView, view2: self)
+        matchSizeWithConstraints(view1: collectionView, view2: self)
     }
 
-    private func setupScrollViewContent() {
-        scrollView.addSubview(stackView)
+//    private func setupScrollView() {
+//        addSubview(scrollView)
+//
+//        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+//        singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
+//
+//        matchSizeWithConstraints(view1: scrollView, view2: self)
+//    }
 
-        for value in items {
-            let valueLabel = UILabel()
-            valueLabel.translatesAutoresizingMaskIntoConstraints = false
-            valueLabel.text = "\(value)"
-            valueLabel.font = itemFont
-            valueLabel.textColor = itemFontColor
-            valueLabel.textAlignment = .center
+//    private func setupScrollViewContent() {
+//        scrollView.addSubview(stackView)
+//
+//        for value in items {
+//            let valueLabel = UILabel()
+//            valueLabel.translatesAutoresizingMaskIntoConstraints = false
+//            valueLabel.text = "\(value)"
+//            valueLabel.font = itemFont
+//            valueLabel.textColor = itemFontColor
+//            valueLabel.textAlignment = .center
+//
+//            stackView.addArrangedSubview(valueLabel)
+//
+//            NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal,
+//                               toItem: scrollView, attribute: .height, multiplier: 1,
+//                               constant: 0).isActive = true
+//
+//            NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal,
+//                               toItem: valueLabel, attribute: .height, multiplier: 1,
+//                               constant: 0).isActive = true
+//        }
+//
+//        matchSizeWithConstraints(view1: stackView, view2: scrollView)
+//    }
 
-            stackView.addArrangedSubview(valueLabel)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerItemCollectionViewCell", for: indexPath)
 
-            NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal,
-                               toItem: scrollView, attribute: .height, multiplier: 1,
-                               constant: 0).isActive = true
-
-            NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal,
-                               toItem: valueLabel, attribute: .height, multiplier: 1,
-                               constant: 0).isActive = true
+        if let cell = cell as? PickerItemCollectionViewCell {
+            cell.update(string: items[indexPath.row])
         }
 
-        matchSizeWithConstraints(view1: stackView, view2: scrollView)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
     internal func scrollViewWillEndDragging(_ scrollView: UIScrollView,
