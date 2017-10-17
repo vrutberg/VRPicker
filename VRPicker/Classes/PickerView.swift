@@ -15,10 +15,8 @@ protocol PickerViewDelegate: class {
 }
 
 final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    private let items: [String]
+    private let cellModels: [PickerItemCollectionViewCell.Model]
     private let itemWidth: Int
-    private let itemFont: UIFont
-    private let itemFontColor: UIColor
     private let sliderVelocityCoefficient: Double
     private let defaultSelectedIndex: Int
     private var didSetDefault = false
@@ -33,10 +31,10 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
          itemFontColor: UIColor,
          sliderVelocityCoefficient: Double,
          defaultSelectedIndex: Int) {
-        self.items = items
+        self.cellModels = items.map {
+            PickerItemCollectionViewCell.Model(text: $0, font: itemFont, fontColor: itemFontColor)
+        }
         self.itemWidth = itemWidth
-        self.itemFont = itemFont
-        self.itemFontColor = itemFontColor
         self.sliderVelocityCoefficient = sliderVelocityCoefficient
         self.defaultSelectedIndex = defaultSelectedIndex
 
@@ -112,8 +110,8 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
 
         var itemIndex = Int(round(offsetX / CGFloat(itemWidth)))
 
-        if itemIndex > items.count - 1 {
-            itemIndex = items.count - 1
+        if itemIndex > cellModels.count - 1 {
+            itemIndex = cellModels.count - 1
         } else if itemIndex < 0 {
             itemIndex = 0
         }
@@ -149,8 +147,8 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
         // * This should probably be merged with convert(contentOffsetToIndex)
         var itemIndex = Int(floor(point.x / CGFloat(itemWidth)))
 
-        if itemIndex > items.count - 1 {
-            itemIndex = items.count - 1
+        if itemIndex > cellModels.count - 1 {
+            itemIndex = cellModels.count - 1
         } else if itemIndex < 0 {
             itemIndex = 0
         }
@@ -173,14 +171,14 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
                                                       for: indexPath)
 
         if let cell = cell as? PickerItemCollectionViewCell {
-            cell.update(string: items[indexPath.row])
+            cell.update(model: cellModels[indexPath.row])
         }
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return cellModels.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {

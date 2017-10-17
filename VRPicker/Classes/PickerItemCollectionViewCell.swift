@@ -10,7 +10,16 @@ import Foundation
 class PickerItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var label: UILabel!
 
-    func update(string: String) {
-        label.text = string
+    func update(model: Model) {
+        label.text = model.text
+        label.font = model.font
+        label.textColor = model.fontColor
+    }
+
+    struct Model {
+        let text: String
+        let font: UIFont
+        let fontColor: UIColor
     }
 }
+

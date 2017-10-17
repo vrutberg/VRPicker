@@ -26,7 +26,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
         super.init(frame: frame)
 
         setupGradientContainerView()
-//        setupSelectionPickerView()
+        setupSelectionPickerView()
         setupPickerView()
 
         bringSubview(toFront: pickerView)
@@ -45,39 +45,39 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
     }
 
     private func updateSubviews() {
-//        let gradientWidth = Int(Double(frame.width) * configuration.gradientWidthInPercent)
+        let gradientWidth = Int(Double(frame.width) * configuration.gradientWidthInPercent)
 
-//        leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(frame.height))
-//        rightGradientLayer.frame = CGRect(x: Int(frame.width) - gradientWidth, y: 0,
-//                                          width: gradientWidth, height: Int(frame.height))
+        leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(frame.height))
+        rightGradientLayer.frame = CGRect(x: Int(frame.width) - gradientWidth, y: 0,
+                                          width: gradientWidth, height: Int(frame.height))
 
-//        maskingLayer?.removeFromSuperlayer()
-//        maskingLayer = nil
+        maskingLayer?.removeFromSuperlayer()
+        maskingLayer = nil
 
-//        let newMaskingLayer = createMaskingLayer()
-//        selectionPickerView.layer.addSublayer(newMaskingLayer)
-//        maskingLayer = newMaskingLayer
+        let newMaskingLayer = createMaskingLayer()
+        selectionPickerView.layer.addSublayer(newMaskingLayer)
+        maskingLayer = newMaskingLayer
 
-//        selectionPickerView.layer.mask = createCircleLayer()
-//        pickerView.layer.mask = createMaskingLayer()
+        selectionPickerView.layer.mask = createCircleLayer()
+        pickerView.layer.mask = createMaskingLayer()
     }
 
     private var itemsAsStrings: [String] {
         return configuration.items.map { $0.description }
     }
 
-//    private lazy var selectionPickerView: PickerView = {
-//        let pickerView = PickerView(items: self.itemsAsStrings,
-//                                    itemWidth: self.configuration.itemWidth,
-//                                    itemFont: self.configuration.selectedFont,
-//                                    itemFontColor: self.configuration.selectedFontColor,
-//                                    sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient,
-//                                    defaultSelectedIndex: self.configuration.defaultSelectedIndex)
-//
-//        pickerView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return pickerView
-//    }()
+    private lazy var selectionPickerView: PickerView = {
+        let pickerView = PickerView(items: self.itemsAsStrings,
+                                    itemWidth: self.configuration.itemWidth,
+                                    itemFont: self.configuration.selectedFont,
+                                    itemFontColor: self.configuration.selectedFontColor,
+                                    sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient,
+                                    defaultSelectedIndex: self.configuration.defaultSelectedIndex)
+
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+
+        return pickerView
+    }()
 
     private lazy var pickerView: PickerView = {
         let pickerView = PickerView(items: self.itemsAsStrings,
@@ -154,13 +154,13 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
         return layer
     }
 
-//    private func setupSelectionPickerView() {
-//        addSubview(selectionPickerView)
-//
-//        selectionPickerView.layer.backgroundColor = configuration.selectionBackgroundColor.cgColor
-//
-//        matchSizeWithConstraints(view1: selectionPickerView, view2: self)
-//    }
+    private func setupSelectionPickerView() {
+        addSubview(selectionPickerView)
+
+        selectionPickerView.layer.backgroundColor = configuration.selectionBackgroundColor.cgColor
+
+        matchSizeWithConstraints(view1: selectionPickerView, view2: self)
+    }
 
     private func setupPickerView() {
         addSubview(pickerView)
@@ -187,7 +187,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
     // MARK: PickerViewDelegate
 
     func picker(_ sender: PickerView, didSlideTo: CGPoint) {
-//        selectionPickerView.scrollView.contentOffset.x = didSlideTo.x
+        selectionPickerView.collectionView.contentOffset.x = didSlideTo.x
     }
 
     func picker(_ sender: PickerView, didSelectIndex index: Int) {
