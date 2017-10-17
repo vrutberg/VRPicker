@@ -187,7 +187,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
     // MARK: PickerViewDelegate
 
     func picker(_ sender: PickerView, didSlideTo: CGPoint) {
-        selectionPickerView.scrollView.contentOffset.x = didSlideTo.x
+        selectionPickerView.collectionView.contentOffset.x = didSlideTo.x
     }
 
     func picker(_ sender: PickerView, didSelectIndex index: Int) {

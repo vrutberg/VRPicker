@@ -14,11 +14,9 @@ protocol PickerViewDelegate: class {
     func picker(_ sender: PickerView, didSlideTo: CGPoint)
 }
 
-final class PickerView: UIView, UIScrollViewDelegate {
-    private let items: [String]
+final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    private let cellModels: [PickerItemCollectionViewCell.Model]
     private let itemWidth: Int
-    private let itemFont: UIFont
-    private let itemFontColor: UIColor
     private let sliderVelocityCoefficient: Double
     private let defaultSelectedIndex: Int
     private var didSetDefault = false
@@ -33,18 +31,16 @@ final class PickerView: UIView, UIScrollViewDelegate {
          itemFontColor: UIColor,
          sliderVelocityCoefficient: Double,
          defaultSelectedIndex: Int) {
-        self.items = items
+        self.cellModels = items.map {
+            PickerItemCollectionViewCell.Model(text: $0, font: itemFont, fontColor: itemFontColor)
+        }
         self.itemWidth = itemWidth
-        self.itemFont = itemFont
-        self.itemFontColor = itemFontColor
         self.sliderVelocityCoefficient = sliderVelocityCoefficient
         self.defaultSelectedIndex = defaultSelectedIndex
 
         super.init(frame: .zero)
 
-        addSubview(scrollView)
-        setupScrollView()
-        setupScrollViewContent()
+        setupCollectionView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,27 +51,28 @@ final class PickerView: UIView, UIScrollViewDelegate {
         return (frame.width - CGFloat(itemWidth)) / 2.0
     }
 
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
 
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isScrollEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.delegate = self
+        layout.itemSize = CGSize(width: self.itemWidth,
+                                 height: self.itemWidth)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
 
-        return scrollView
-    }()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
+        collectionView.register(UINib(nibName: "PickerItemCollectionViewCell",
+                                      bundle: Bundle(for: PickerView.self)),
+                                forCellWithReuseIdentifier: "PickerItemCollectionViewCell")
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalCentering
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
 
-        return stackView
+        return collectionView
     }()
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
@@ -90,7 +87,7 @@ final class PickerView: UIView, UIScrollViewDelegate {
 
     private func scroll(toIndex index: Int, animated: Bool = true) {
         let point = convert(indexToPoint: index)
-        scrollView.setContentOffset(point, animated: animated)
+        collectionView.setContentOffset(point, animated: animated)
     }
 
     public func set(selectedIndex index: Int, animated: Bool = true) {
@@ -113,8 +110,8 @@ final class PickerView: UIView, UIScrollViewDelegate {
 
         var itemIndex = Int(round(offsetX / CGFloat(itemWidth)))
 
-        if itemIndex > items.count - 1 {
-            itemIndex = items.count - 1
+        if itemIndex > cellModels.count - 1 {
+            itemIndex = cellModels.count - 1
         } else if itemIndex < 0 {
             itemIndex = 0
         }
@@ -130,7 +127,10 @@ final class PickerView: UIView, UIScrollViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
+        collectionView.contentInset = UIEdgeInsets(top: 0,
+                                                   left: xContentInset,
+                                                   bottom: 0,
+                                                   right: xContentInset)
 
         if !didSetDefault {
             set(selectedIndex: defaultSelectedIndex, animated: false)
@@ -141,14 +141,14 @@ final class PickerView: UIView, UIScrollViewDelegate {
     }
 
     @objc private func scrollViewWasTapped(_ sender: UITapGestureRecognizer) {
-        let point = sender.location(in: scrollView)
+        let point = sender.location(in: collectionView)
 
         // TODO(vrutberg):
         // * This should probably be merged with convert(contentOffsetToIndex)
         var itemIndex = Int(floor(point.x / CGFloat(itemWidth)))
 
-        if itemIndex > items.count - 1 {
-            itemIndex = items.count - 1
+        if itemIndex > cellModels.count - 1 {
+            itemIndex = cellModels.count - 1
         } else if itemIndex < 0 {
             itemIndex = 0
         }
@@ -156,38 +156,33 @@ final class PickerView: UIView, UIScrollViewDelegate {
         set(selectedIndex: itemIndex)
     }
 
-    private func setupScrollView() {
-        addSubview(scrollView)
+    private func setupCollectionView() {
+        addSubview(collectionView)
 
-        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        collectionView.addGestureRecognizer(singleTapGestureRecognizer)
         singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
 
-        matchSizeWithConstraints(view1: scrollView, view2: self)
+        matchSizeWithConstraints(view1: collectionView, view2: self)
     }
 
-    private func setupScrollViewContent() {
-        scrollView.addSubview(stackView)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerItemCollectionViewCell",
+                                                      for: indexPath)
 
-        for value in items {
-            let valueLabel = UILabel()
-            valueLabel.translatesAutoresizingMaskIntoConstraints = false
-            valueLabel.text = "\(value)"
-            valueLabel.font = itemFont
-            valueLabel.textColor = itemFontColor
-            valueLabel.textAlignment = .center
-
-            stackView.addArrangedSubview(valueLabel)
-
-            NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal,
-                               toItem: scrollView, attribute: .height, multiplier: 1,
-                               constant: 0).isActive = true
-
-            NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal,
-                               toItem: valueLabel, attribute: .height, multiplier: 1,
-                               constant: 0).isActive = true
+        if let cell = cell as? PickerItemCollectionViewCell {
+            cell.update(model: cellModels[indexPath.row])
         }
 
-        matchSizeWithConstraints(view1: stackView, view2: scrollView)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cellModels.count
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
     internal func scrollViewWillEndDragging(_ scrollView: UIScrollView,
