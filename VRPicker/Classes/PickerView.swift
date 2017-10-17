@@ -42,9 +42,6 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
 
         super.init(frame: .zero)
 
-//        addSubview(scrollView)
-//        setupScrollView()
-//        setupScrollViewContent()
         setupCollectionView()
     }
 
@@ -59,7 +56,8 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
 
-        layout.itemSize = CGSize(width: self.itemWidth, height: self.itemWidth)
+        layout.itemSize = CGSize(width: self.itemWidth,
+                                 height: self.itemWidth)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
@@ -70,35 +68,13 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
                                       bundle: Bundle(for: PickerView.self)),
                                 forCellWithReuseIdentifier: "PickerItemCollectionViewCell")
 
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
 
         return collectionView
-    }()
-
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isScrollEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.delegate = self
-
-        return scrollView
-    }()
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalCentering
-
-        return stackView
     }()
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
@@ -113,7 +89,7 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
 
     private func scroll(toIndex index: Int, animated: Bool = true) {
         let point = convert(indexToPoint: index)
-        scrollView.setContentOffset(point, animated: animated)
+        collectionView.setContentOffset(point, animated: animated)
     }
 
     public func set(selectedIndex index: Int, animated: Bool = true) {
@@ -153,7 +129,10 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: self.xContentInset, bottom: 0, right: self.xContentInset)
+        collectionView.contentInset = UIEdgeInsets(top: 0,
+                                                   left: xContentInset,
+                                                   bottom: 0,
+                                                   right: xContentInset)
 
         if !didSetDefault {
             set(selectedIndex: defaultSelectedIndex, animated: false)
@@ -164,7 +143,7 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
     }
 
     @objc private func scrollViewWasTapped(_ sender: UITapGestureRecognizer) {
-        let point = sender.location(in: scrollView)
+        let point = sender.location(in: collectionView)
 
         // TODO(vrutberg):
         // * This should probably be merged with convert(contentOffsetToIndex)
@@ -182,46 +161,16 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
     private func setupCollectionView() {
         addSubview(collectionView)
 
+        collectionView.addGestureRecognizer(singleTapGestureRecognizer)
+        singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
+
         matchSizeWithConstraints(view1: collectionView, view2: self)
     }
 
-//    private func setupScrollView() {
-//        addSubview(scrollView)
-//
-//        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
-//        singleTapGestureRecognizer.addTarget(self, action: #selector(scrollViewWasTapped(_:)))
-//
-//        matchSizeWithConstraints(view1: scrollView, view2: self)
-//    }
-
-//    private func setupScrollViewContent() {
-//        scrollView.addSubview(stackView)
-//
-//        for value in items {
-//            let valueLabel = UILabel()
-//            valueLabel.translatesAutoresizingMaskIntoConstraints = false
-//            valueLabel.text = "\(value)"
-//            valueLabel.font = itemFont
-//            valueLabel.textColor = itemFontColor
-//            valueLabel.textAlignment = .center
-//
-//            stackView.addArrangedSubview(valueLabel)
-//
-//            NSLayoutConstraint(item: valueLabel, attribute: .height, relatedBy: .equal,
-//                               toItem: scrollView, attribute: .height, multiplier: 1,
-//                               constant: 0).isActive = true
-//
-//            NSLayoutConstraint(item: valueLabel, attribute: .width, relatedBy: .equal,
-//                               toItem: valueLabel, attribute: .height, multiplier: 1,
-//                               constant: 0).isActive = true
-//        }
-//
-//        matchSizeWithConstraints(view1: stackView, view2: scrollView)
-//    }
-
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerItemCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerItemCollectionViewCell",
+                                                      for: indexPath)
 
         if let cell = cell as? PickerItemCollectionViewCell {
             cell.update(string: items[indexPath.row])
