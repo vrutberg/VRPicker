@@ -1,4 +1,5 @@
 use_frameworks!
+platform :ios, '9.0'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
@@ -13,7 +14,5 @@ target 'VRPicker_Example' do
 
   target 'VRPicker_Tests' do
     inherit! :search_paths
-
-    
   end
 end
