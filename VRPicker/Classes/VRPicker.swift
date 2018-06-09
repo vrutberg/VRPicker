@@ -49,7 +49,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
         leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(frame.height))
         rightGradientLayer.frame = CGRect(x: Int(frame.width) - gradientWidth, y: 0,
                                           width: gradientWidth, height: Int(frame.height))
-        
+
         maskingLayer?.removeFromSuperlayer()
         maskingLayer = nil
 
@@ -61,8 +61,8 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
         pickerView.layer.mask = createMaskingLayer()
     }
 
-    private lazy var selectionPickerView: PickerView = self.createPickerView(selection: true)
-    private lazy var pickerView: PickerView = self.createPickerView(selection: false)
+    private lazy var selectionPickerView = self.createPickerView(selection: true)
+    private lazy var pickerView = self.createPickerView(selection: false)
 
     private func createPickerView(selection: Bool) -> PickerView {
         let itemFont = selection ? configuration.selectedFont : configuration.nonSelectedFont
@@ -147,7 +147,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
 
         selectionPickerView.layer.backgroundColor = configuration.selectionBackgroundColor.cgColor
 
-        matchSizeWithConstraints(view1: selectionPickerView, view2: self)
+        selectionPickerView.matchSize(with: self)
     }
 
     private func setupPickerView() {
@@ -155,7 +155,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
 
         pickerView.delegate = self
 
-        matchSizeWithConstraints(view1: pickerView, view2: self)
+        pickerView.matchSize(with: self)
     }
 
     override public func layoutSubviews() {
@@ -169,7 +169,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
 
         addSubview(gradientContainerView)
 
-        matchSizeWithConstraints(view1: gradientContainerView, view2: self)
+        gradientContainerView.matchSize(with: self)
     }
 
     // MARK: PickerViewDelegate

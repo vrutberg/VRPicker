@@ -14,10 +14,11 @@
 		6E4770974F4ACEDF8EB535D28C455F53 /* Pods-VRPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 117BC05E892481F94A9543D6A10C8DA2 /* Pods-VRPicker_Tests-dummy.m */; };
 		7B2A42BD9E7E36C11BA1F6730BB220A6 /* VRPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DB57596A2B87EEAB27D26A1021364C6 /* VRPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F50F2EC20CC48C700020E9D /* UITapGestureRecognizer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F50F2EA20CC48BE00020E9D /* UITapGestureRecognizer+Extension.swift */; };
+		7F50F2EE20CC4C2A00020E9D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F50F2ED20CC4C2A00020E9D /* UIView+Extension.swift */; };
+		7F50F2F020CC57CE00020E9D /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F50F2EF20CC57CE00020E9D /* Int+Extension.swift */; };
 		971D91F72F175CC3BEAEE2C758A09A9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 		A404C57C0472EAF17712C79E0D3926B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
 		A9A5137A2F1206860B89D56F148D5F76 /* PickerItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07380EE5C1CE30ED1732A5705216A23 /* PickerItemCollectionViewCell.swift */; };
-		B30D97B8B2529B536B66C74B8AE276A4 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52C9C7AC1364E02F3D307DE7E7A97BA /* HelperFunctions.swift */; };
 		C39DA9766C0C6102CE9C285C1DA1DDFD /* PickerItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2269E9C8B08E3E3B0322D72CBD30697D /* PickerItemCollectionViewCell.xib */; };
 		C3AA75812294063182C34B823622F306 /* Pods-VRPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8707B59FFA4DF8FA0E778B8B5E7D5F0A /* Pods-VRPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7E588F17CF135D806FA60888DFB0D79 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB0791D856F41313BCC6A76F7EC99A6 /* PickerView.swift */; };
@@ -58,6 +59,8 @@
 		6DB57596A2B87EEAB27D26A1021364C6 /* VRPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VRPicker-umbrella.h"; sourceTree = "<group>"; };
 		7DF955934A7DD1B4805AFC7E30EF4542 /* Pods-VRPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		7F50F2EA20CC48BE00020E9D /* UITapGestureRecognizer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITapGestureRecognizer+Extension.swift"; path = "VRPicker/Classes/UITapGestureRecognizer+Extension.swift"; sourceTree = "<group>"; };
+		7F50F2ED20CC4C2A00020E9D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7F50F2EF20CC57CE00020E9D /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "VRPicker/Classes/Int+Extension.swift"; sourceTree = "<group>"; };
 		8707B59FFA4DF8FA0E778B8B5E7D5F0A /* Pods-VRPicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRPicker_Example-umbrella.h"; sourceTree = "<group>"; };
 		8F76D80FA6761E202B0C39436F15D066 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -65,7 +68,6 @@
 		9BDF18DFDA00FA5F54BC55969906E52F /* Pods-VRPicker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRPicker_Tests-resources.sh"; sourceTree = "<group>"; };
 		9EDC017A09B31EDD971EDDD037F8F763 /* Pods-VRPicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VRPicker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		9F7E8A25FEC84C8B05A9C73FC2EE45FC /* Pods-VRPicker_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VRPicker_Example-resources.sh"; sourceTree = "<group>"; };
-		A52C9C7AC1364E02F3D307DE7E7A97BA /* HelperFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HelperFunctions.swift; path = VRPicker/Classes/HelperFunctions.swift; sourceTree = "<group>"; };
 		B07380EE5C1CE30ED1732A5705216A23 /* PickerItemCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerItemCollectionViewCell.swift; path = VRPicker/Classes/PickerItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C6A4B33EA4942DF9B62365430C2837F5 /* Pods-VRPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VRPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,7 +112,6 @@
 		2C8D7C56542835B3125052DA752BA112 /* VRPicker */ = {
 			isa = PBXGroup;
 			children = (
-				A52C9C7AC1364E02F3D307DE7E7A97BA /* HelperFunctions.swift */,
 				B07380EE5C1CE30ED1732A5705216A23 /* PickerItemCollectionViewCell.swift */,
 				5EB0791D856F41313BCC6A76F7EC99A6 /* PickerView.swift */,
 				EDF0B8F2E3696B99F18EE1F29A41549C /* VRPicker.swift */,
@@ -118,6 +119,8 @@
 				E3861BD673D9E6A36C46791A6A3D29F5 /* Resources */,
 				71D730083972F188877753D6D5D17F42 /* Support Files */,
 				7F50F2EA20CC48BE00020E9D /* UITapGestureRecognizer+Extension.swift */,
+				7F50F2ED20CC4C2A00020E9D /* UIView+Extension.swift */,
+				7F50F2EF20CC57CE00020E9D /* Int+Extension.swift */,
 			);
 			name = VRPicker;
 			path = ../..;
@@ -369,7 +372,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F50F2EC20CC48C700020E9D /* UITapGestureRecognizer+Extension.swift in Sources */,
-				B30D97B8B2529B536B66C74B8AE276A4 /* HelperFunctions.swift in Sources */,
+				7F50F2F020CC57CE00020E9D /* Int+Extension.swift in Sources */,
+				7F50F2EE20CC4C2A00020E9D /* UIView+Extension.swift in Sources */,
 				A9A5137A2F1206860B89D56F148D5F76 /* PickerItemCollectionViewCell.swift in Sources */,
 				C7E588F17CF135D806FA60888DFB0D79 /* PickerView.swift in Sources */,
 				D45CD506A3EA14632BB7776DE0C39D5B /* VRPicker-dummy.m in Sources */,
