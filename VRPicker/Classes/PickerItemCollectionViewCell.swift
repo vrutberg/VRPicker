@@ -22,4 +22,3 @@ class PickerItemCollectionViewCell: UICollectionViewCell {
         let fontColor: UIColor
     }
 }
-

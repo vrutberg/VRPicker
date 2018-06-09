@@ -34,21 +34,12 @@ class ViewController: UIViewController {
 
         view.addSubview(pickerView)
 
-        NSLayoutConstraint(item: pickerView, attribute: .top, relatedBy: .equal,
-                           toItem: topLayoutGuide, attribute: .top, multiplier: 1,
-                           constant: 20).isActive = true
+        let layoutMargins = view.layoutMarginsGuide
 
-        NSLayoutConstraint(item: pickerView, attribute: .leading, relatedBy: .equal,
-                           toItem: view, attribute: .leading, multiplier: 1,
-                           constant: 0).isActive = true
-
-        NSLayoutConstraint(item: pickerView, attribute: .trailing, relatedBy: .equal,
-                           toItem: view, attribute: .trailing, multiplier: 1,
-                           constant: 0).isActive = true
-
-        NSLayoutConstraint(item: pickerView, attribute: .height, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1,
-                           constant: 80).isActive = true
+        NSLayoutConstraint.activate([pickerView.topAnchor.constraint(equalTo: layoutMargins.topAnchor),
+                                     pickerView.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor),
+                                     pickerView.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor),
+                                     pickerView.heightAnchor.constraint(equalToConstant: 80)])
     }
 
     func pickerDidSelect(_ item: PickerItem) {

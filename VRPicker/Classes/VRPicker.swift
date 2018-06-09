@@ -122,10 +122,10 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
 
     private func createCirclePath() -> UIBezierPath {
         let radius = CGFloat(Double(self.configuration.itemWidth) * configuration.selectionRadiusInPercent)
-        let y = (frame.height / CGFloat(2)) - radius
-        let x = (frame.width / CGFloat(2)) - radius
+        let rectX = (frame.width / CGFloat(2)) - radius
+        let rectY = (frame.height / CGFloat(2)) - radius
 
-        let roundedRect = CGRect(x: x, y: y, width: 2 * radius, height: 2 * radius)
+        let roundedRect = CGRect(x: rectX, y: rectY, width: 2 * radius, height: 2 * radius)
 
         return UIBezierPath(roundedRect: roundedRect, cornerRadius: radius)
     }
