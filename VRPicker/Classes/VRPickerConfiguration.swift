@@ -70,4 +70,8 @@ public struct VRPickerConfiguration<T: VRPickerItem> {
         self.itemWidth = itemWidth
         self.sliderVelocityCoefficient = sliderVelocityCoefficient
     }
+
+    internal var itemsAsStrings: [String] {
+        return items.map { $0.description }
+    }
 }

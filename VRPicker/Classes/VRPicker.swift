@@ -13,7 +13,6 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
 
     private var maskingLayer: CAShapeLayer?
     private var circleLayer: CAShapeLayer?
-    private var didSetDefaultIndex = false
 
     private(set) var selectedIndex: Int
 
@@ -50,7 +49,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
         leftGradientLayer.frame = CGRect(x: 0, y: 0, width: gradientWidth, height: Int(frame.height))
         rightGradientLayer.frame = CGRect(x: Int(frame.width) - gradientWidth, y: 0,
                                           width: gradientWidth, height: Int(frame.height))
-
+        
         maskingLayer?.removeFromSuperlayer()
         maskingLayer = nil
 
@@ -62,35 +61,24 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
         pickerView.layer.mask = createMaskingLayer()
     }
 
-    private var itemsAsStrings: [String] {
-        return configuration.items.map { $0.description }
+    private lazy var selectionPickerView: PickerView = self.createPickerView(selection: true)
+    private lazy var pickerView: PickerView = self.createPickerView(selection: false)
+
+    private func createPickerView(selection: Bool) -> PickerView {
+        let itemFont = selection ? configuration.selectedFont : configuration.nonSelectedFont
+        let itemFontColor = selection ? configuration.selectedFontColor :  configuration.nonSelectedFontColor
+
+        let pickerView = PickerView(items: configuration.itemsAsStrings,
+                                    itemWidth: configuration.itemWidth,
+                                    itemFont: itemFont,
+                                    itemFontColor: itemFontColor,
+                                    sliderVelocityCoefficient: configuration.sliderVelocityCoefficient,
+                                    defaultSelectedIndex: configuration.defaultSelectedIndex)
+
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+
+        return pickerView
     }
-
-    private lazy var selectionPickerView: PickerView = {
-        let pickerView = PickerView(items: self.itemsAsStrings,
-                                    itemWidth: self.configuration.itemWidth,
-                                    itemFont: self.configuration.selectedFont,
-                                    itemFontColor: self.configuration.selectedFontColor,
-                                    sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient,
-                                    defaultSelectedIndex: self.configuration.defaultSelectedIndex)
-
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
-
-        return pickerView
-    }()
-
-    private lazy var pickerView: PickerView = {
-        let pickerView = PickerView(items: self.itemsAsStrings,
-                                    itemWidth: self.configuration.itemWidth,
-                                    itemFont: self.configuration.nonSelectedFont,
-                                    itemFontColor: self.configuration.nonSelectedFontColor,
-                                    sliderVelocityCoefficient: self.configuration.sliderVelocityCoefficient,
-                                    defaultSelectedIndex: self.configuration.defaultSelectedIndex)
-
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
-
-        return pickerView
-    }()
 
     private lazy var gradientContainerView: UIView = {
         let view = UIView(frame: .zero)
@@ -148,7 +136,7 @@ public class VRPicker<T: VRPickerItem>: UIControl, PickerViewDelegate {
             layer.endPoint = CGPoint(x: 0, y: 0)
         }
 
-        layer.colors = self.configuration.gradientColors.map { $0.cgColor }
+        layer.colors = configuration.gradientColors.map { $0.cgColor }
         layer.locations = [0.0, 1.0]
 
         return layer

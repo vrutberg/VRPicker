@@ -75,15 +75,7 @@ final class PickerView: UIView, UIScrollViewDelegate, UICollectionViewDataSource
         return collectionView
     }()
 
-    private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
-        let gestureRecognizer = UITapGestureRecognizer()
-
-        gestureRecognizer.numberOfTapsRequired = 1
-        gestureRecognizer.isEnabled = true
-        gestureRecognizer.cancelsTouchesInView = false
-
-        return gestureRecognizer
-    }()
+    private lazy var singleTapGestureRecognizer = UITapGestureRecognizer.singleTap
 
     private func scroll(toIndex index: Int, animated: Bool = true) {
         let point = convert(indexToPoint: index)
